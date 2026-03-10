@@ -11599,7 +11599,7 @@
     ];
 
     let history = [], allPartieScores = [], currentPartieBilan = [];
-    let playedThemes = new Set(), currentAnswers = [], gameTime = 90, timerInterval, totalScore = 0;
+    let playedThemes = new Set(), currentAnswers = [], availableAnswers = [], gameTime = 90, timerInterval, totalScore = 0;
 
     function playSuccessSound() {
         const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
@@ -11657,6 +11657,7 @@
         } while(playedThemes.has(themeObj.title));
         playedThemes.add(themeObj.title);
         currentAnswers = themeObj.answers;
+        availableAnswers = [...currentAnswers];
         const dashIndex = themeObj.title.indexOf('-');
         let cat = dashIndex !== -1 ? themeObj.title.substring(0, dashIndex).trim() : "Général";
         let thm = dashIndex !== -1 ? themeObj.title.substring(dashIndex + 1).trim() : themeObj.title;
@@ -11676,7 +11677,32 @@
             const input = document.createElement("input");
             input.type = "text";
             input.oninput = (e) => { e.target.value = e.target.value.toUpperCase(); checkLive(e.target); };
+            input.onkeydown = (e) => {
+                if (e.key === 'Enter' || e.key === 'Tab') {
+                    applyFinalValidation(input);
+                }
+            };
             wrap.appendChild(input); container.appendChild(wrap);
+        }
+    }
+
+    function applyFinalValidation(input) {
+        const val = input.value.trim().toUpperCase();
+        if(!val) return;
+        
+        let matches = [];
+        for (let ans of availableAnswers) {
+            let dist = getLevenshteinDistance(val, ans.toUpperCase());
+            if (dist <= 2) matches.push(ans);
+        }
+
+        if (matches.length > 0) {
+            matches.sort((a, b) => a.localeCompare(b));
+            const selected = matches[0];
+            input.value = selected.toUpperCase();
+            availableAnswers = availableAnswers.filter(a => a !== selected);
+            input.classList.remove("correct-approx");
+            input.classList.add("correct-exact");
         }
     }
 
@@ -11688,49 +11714,45 @@
         wrap.querySelectorAll(".score-badge").forEach(b => b.remove());
         input.classList.remove("correct-exact", "correct-approx", "duplicate-input", "approx-duplicate-input", "partial-input");
         if(!val) return;
-        let matchedTarget = null;
-        let isExact = false;
-        for (let ans of currentAnswers) {
-            let dist = getLevenshteinDistance(val, ans.toUpperCase());
-            if (dist === 0) { matchedTarget = ans; isExact = true; break; }
-            if (dist <= 2) { matchedTarget = ans; isExact = false; break; }
-        }
-        if (matchedTarget) {
-            let duplicateType = null;
-            for (let otherInput of allInputs) {
-                if (otherInput === input) continue;
-                let otherVal = otherInput.value.trim().toUpperCase();
-                if (!otherVal) continue;
-                if (getLevenshteinDistance(otherVal, matchedTarget.toUpperCase()) <= 2) {
-                    duplicateType = isExact ? 'exact' : 'approx';
-                    break;
-                }
-            }
-            if (duplicateType === 'exact') {
+
+        for (let otherInput of allInputs) {
+            if (otherInput === input) continue;
+            let otherVal = otherInput.value.trim().toUpperCase();
+            if (otherVal && otherVal === val) {
                 input.classList.add("duplicate-input");
-                const b = document.createElement("div"); b.className = "score-badge badge-duplicate"; b.textContent = "+0"; wrap.appendChild(b);
-            } else if (duplicateType === 'approx') {
-                input.classList.add("approx-duplicate-input");
-                const b = document.createElement("div"); b.className = "score-badge badge-approx-dup"; b.textContent = "+0"; wrap.appendChild(b);
-            } else {
-                playSuccessSound();
-                input.classList.add(isExact ? "correct-exact" : "correct-approx");
-                const points = calculatePoints(val, matchedTarget, catLabel);
+                return;
+            }
+        }
+
+        let matches = [];
+        let matchedExact = null;
+        for (let ans of availableAnswers) {
+            let dist = getLevenshteinDistance(val, ans.toUpperCase());
+            if (dist === 0) { matchedExact = ans; break; }
+            if (dist <= 2) matches.push(ans);
+        }
+
+        if (matchedExact || matches.length > 0) {
+            playSuccessSound();
+            if (matchedExact) {
+                input.classList.add("correct-exact");
+                const points = calculatePoints(val, matchedExact, catLabel);
                 const b = document.createElement("div"); 
                 b.className = "score-badge"; 
-                b.style.backgroundColor = isExact ? "var(--exact-color)" : "var(--approx-color)";
+                b.style.backgroundColor = "var(--exact-color)";
                 b.textContent = "+" + points; 
                 wrap.appendChild(b);
-
-                // FOCUS AUTOMATIQUE SI EXACT
-                if (isExact) {
-                    const currentIndex = allInputs.indexOf(input);
-                    if (currentIndex !== -1 && currentIndex < allInputs.length - 1) {
-                        allInputs[currentIndex + 1].focus();
-                    }
-                }
+            } else {
+                input.classList.add("correct-approx");
+                matches.sort((a, b) => a.localeCompare(b));
+                const points = calculatePoints(val, matches[0], catLabel);
+                const b = document.createElement("div"); 
+                b.className = "score-badge"; 
+                b.style.backgroundColor = "var(--approx-color)";
+                b.textContent = "+" + points; 
+                wrap.appendChild(b);
             }
-        } else if(currentAnswers.some(a => a.toUpperCase().startsWith(val))) {
+        } else if(availableAnswers.some(a => a.toUpperCase().startsWith(val))) {
             input.classList.add("partial-input");
         }
     }
@@ -11851,7 +11873,6 @@
     document.getElementById("newThemeBtn").onclick = nextTheme;
     document.getElementById("resetBtn").onclick = () => { if(confirm("Réinitialiser toutes les données ?")) { localStorage.clear(); location.reload(); } };
     
-    // LOGIQUE DOUBLE ENTRÉE & F9
     let lastEnterTime = 0;
     document.addEventListener('keydown', (e) => { 
         if(e.key === 'F9') {
