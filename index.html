@@ -204,7 +204,6 @@
                 <ul>
                     <li><span class="res-good">Vert Foncé</span> : Réponse exacte.</li>
                     <li><span class="res-approx">Vert Clair</span> : Réponse approximative (faute de frappe légère).</li>
-                    <li><span class="res-duplicate">Violet/Bleu</span> : Doublon (réponse déjà donnée).</li>
                 </ul>
             </li>
             <li><b>Points :</b> Plus le mot est long, plus il rapporte de points. Les thèmes <b>EXPERT</b> rapportent un bonus fixe de 20 points par réponse.</li>
@@ -11710,19 +11709,9 @@
         const val = input.value.trim().toUpperCase();
         const wrap = input.parentElement;
         const catLabel = document.getElementById("category-display").textContent;
-        const allInputs = Array.from(document.querySelectorAll("#inputs input"));
         wrap.querySelectorAll(".score-badge").forEach(b => b.remove());
         input.classList.remove("correct-exact", "correct-approx", "duplicate-input", "approx-duplicate-input", "partial-input");
         if(!val) return;
-
-        for (let otherInput of allInputs) {
-            if (otherInput === input) continue;
-            let otherVal = otherInput.value.trim().toUpperCase();
-            if (otherVal && otherVal === val) {
-                input.classList.add("duplicate-input");
-                return;
-            }
-        }
 
         let matches = [];
         let matchedExact = null;
@@ -11775,9 +11764,6 @@
                     let p = calculatePoints(v, bestMatch, catLabel);
                     scoreTurn += p; matchedAnswers.add(bestMatch);
                     foundDetails.push({ user: v, original: bestMatch, pts: p, type: (v === bestMatch.toUpperCase() ? 'exact' : 'approx') });
-                } else {
-                    let isExactDup = (v === bestMatch.toUpperCase());
-                    foundDetails.push({ user: v, original: bestMatch, pts: 0, type: isExactDup ? 'duplicate' : 'approx-dup' });
                 }
             } else { errorDetails.push(v); }
         });
@@ -11799,8 +11785,6 @@
             let goodStr = b.found.map(f => {
                 let cls = 'res-good';
                 if(f.type === 'approx') cls = 'res-approx';
-                if(f.type === 'duplicate') cls = 'res-duplicate';
-                if(f.type === 'approx-dup') cls = 'res-approx-dup';
                 let label = f.pts > 0 ? '+'+f.pts : (f.type === 'duplicate' ? 'Doublon' : 'Doublon Approx');
                 return `<span class="${cls}">${f.original} (${label})</span>`;
             }).join(", ");
