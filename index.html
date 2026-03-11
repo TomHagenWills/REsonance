@@ -151,7 +151,10 @@
 
 <div id="game-area" style="display:none;">
     <div style="display: flex; justify-content: space-between; align-items: center;">
-        <div id="gameTimer">01:30</div>
+        <div style="text-align: center;">
+            <div id="gameTimer">01:30</div>
+            <div id="liveScoreDisplay" style="font-size: 1.1em; font-weight: bold; color: var(--accent-color);">Score : 0</div>
+        </div>
         <div style="width: 200px;">
             <div id="playedThemesProgressBar"><div id="playedThemesProgressFill"></div></div>
         </div>
@@ -202,8 +205,7 @@
             <li><b>Temps :</b> Vous avez 1 minute 30 pour l'ensemble de la partie.</li>
             <li><b>Validation :</b> Les réponses sont vérifiées en temps réel. Une couleur s'affiche selon la précision :
                 <ul>
-                    <li><span class="res-good">Vert Foncé</span> : Réponse exacte.</li>
-                    <li><span class="res-approx">Vert Clair</span> : Réponse approximative (faute de frappe légère).</li>
+                    <li><span class="res-good">Vert Foncé</span> : Réponse exacte ou approximative corrigée.</li>
                 </ul>
             </li>
             <li><b>Points :</b> Plus le mot est long, plus il rapporte de points. Les thèmes <b>EXPERT</b> rapportent un bonus fixe de 20 points par réponse.</li>
@@ -11675,33 +11677,25 @@
             const wrap = document.createElement("div"); wrap.className = "input-wrapper";
             const input = document.createElement("input");
             input.type = "text";
-            input.oninput = (e) => { e.target.value = e.target.value.toUpperCase(); checkLive(e.target); };
+            input.dataset.validated = "false"; 
+            input.oninput = (e) => { 
+                e.target.value = e.target.value.toUpperCase();
+                // Suppression de checkLive ici pour ne plus évaluer en temps réel
+                if(input.dataset.validated === "false") {
+                    input.classList.remove("correct-exact", "correct-approx", "duplicate-input", "approx-duplicate-input", "partial-input");
+                    const val = e.target.value.trim();
+                    if(val && availableAnswers.some(a => a.toUpperCase().startsWith(val))) {
+                        input.classList.add("partial-input");
+                    }
+                }
+            };
             input.onkeydown = (e) => {
                 if (e.key === 'Enter' || e.key === 'Tab') {
-                    applyFinalValidation(input);
+                    // L'évaluation ne se déclenche que sur Entrée ou Tab
+                    checkLive(input);
                 }
             };
             wrap.appendChild(input); container.appendChild(wrap);
-        }
-    }
-
-    function applyFinalValidation(input) {
-        const val = input.value.trim().toUpperCase();
-        if(!val) return;
-        
-        let matches = [];
-        for (let ans of availableAnswers) {
-            let dist = getLevenshteinDistance(val, ans.toUpperCase());
-            if (dist <= 2) matches.push(ans);
-        }
-
-        if (matches.length > 0) {
-            matches.sort((a, b) => a.localeCompare(b));
-            const selected = matches[0];
-            input.value = selected.toUpperCase();
-            availableAnswers = availableAnswers.filter(a => a !== selected);
-            input.classList.remove("correct-approx");
-            input.classList.add("correct-exact");
         }
     }
 
@@ -11710,64 +11704,86 @@
         const wrap = input.parentElement;
         const catLabel = document.getElementById("category-display").textContent;
         wrap.querySelectorAll(".score-badge").forEach(b => b.remove());
+        
+        if(input.dataset.validated === "true") return;
+
         input.classList.remove("correct-exact", "correct-approx", "duplicate-input", "approx-duplicate-input", "partial-input");
         if(!val) return;
 
         let matches = [];
         let matchedExact = null;
+        let maxAllowedDist = val.length <= 4 ? 0 : (val.length <= 6 ? 1 : 2);
         for (let ans of availableAnswers) {
             let dist = getLevenshteinDistance(val, ans.toUpperCase());
             if (dist === 0) { matchedExact = ans; break; }
-            if (dist <= 2) matches.push(ans);
+            if (dist <= maxAllowedDist) matches.push(ans);
         }
 
         if (matchedExact || matches.length > 0) {
             playSuccessSound();
+            let pointsGained = 0;
+            let finalAns = "";
+
             if (matchedExact) {
-                input.classList.add("correct-exact");
-                const points = calculatePoints(val, matchedExact, catLabel);
-                const b = document.createElement("div"); 
-                b.className = "score-badge"; 
-                b.style.backgroundColor = "var(--exact-color)";
-                b.textContent = "+" + points; 
-                wrap.appendChild(b);
+                pointsGained = calculatePoints(val, matchedExact, catLabel);
+                finalAns = matchedExact;
             } else {
-                input.classList.add("correct-approx");
                 matches.sort((a, b) => a.localeCompare(b));
-                const points = calculatePoints(val, matches[0], catLabel);
-                const b = document.createElement("div"); 
-                b.className = "score-badge"; 
-                b.style.backgroundColor = "var(--approx-color)";
-                b.textContent = "+" + points; 
-                wrap.appendChild(b);
+                pointsGained = calculatePoints(val, matches[0], catLabel);
+                finalAns = matches[0];
             }
-        } else if(availableAnswers.some(a => a.toUpperCase().startsWith(val))) {
-            input.classList.add("partial-input");
+            
+            input.value = finalAns.toUpperCase();
+            input.classList.add("correct-exact");
+
+            input.dataset.validated = "true";
+            availableAnswers = availableAnswers.filter(a => a !== finalAns);
+            
+            const b = document.createElement("div"); 
+            b.className = "score-badge"; 
+            b.style.backgroundColor = "var(--exact-color)";
+            b.textContent = "+" + pointsGained; 
+            wrap.appendChild(b);
+
+            totalScore += pointsGained;
+            document.getElementById("liveScoreDisplay").textContent = "Score : " + totalScore;
         }
     }
 
     function validateCurrentTheme() {
         const inputs = Array.from(document.querySelectorAll("#inputs input"));
-        const catLabel = document.getElementById("category-display").textContent;
         const thmLabel = document.getElementById("theme-display").textContent;
-        let scoreTurn = 0; let foundDetails = [], errorDetails = [], matchedAnswers = new Set();
+        const catLabel = document.getElementById("category-display").textContent;
+        
+        let scoreTurn = 0; 
+        let foundDetails = [], errorDetails = [], matchedAnswers = new Set();
+        
         inputs.forEach(i => {
             let v = i.value.trim().toUpperCase();
             if(!v) return;
+            
             let bestMatch = null; let minDist = 99;
+            let maxAllowedDist = v.length <= 4 ? 0 : (v.length <= 6 ? 1 : 2);
+            
             currentAnswers.forEach(a => {
                 let dist = getLevenshteinDistance(v, a.toUpperCase());
-                if(dist <= 2 && dist < minDist) { minDist = dist; bestMatch = a; }
+                if(dist <= maxAllowedDist && dist < minDist) { minDist = dist; bestMatch = a; }
             });
-            if(bestMatch) {
-                if (!matchedAnswers.has(bestMatch)) {
-                    let p = calculatePoints(v, bestMatch, catLabel);
-                    scoreTurn += p; matchedAnswers.add(bestMatch);
-                    foundDetails.push({ user: v, original: bestMatch, pts: p, type: (v === bestMatch.toUpperCase() ? 'exact' : 'approx') });
+
+            if(bestMatch && !matchedAnswers.has(bestMatch)) {
+                let p = calculatePoints(v, bestMatch, catLabel);
+                // Si l'input n'avait pas encore été validé par Entrée/Tab, on l'ajoute au score ici (cas fin de chrono)
+                if (i.dataset.validated !== "true") {
+                    totalScore += p;
                 }
-            } else { errorDetails.push(v); }
+                scoreTurn += p;
+                matchedAnswers.add(bestMatch);
+                foundDetails.push({ user: v, original: bestMatch, pts: p, type: 'exact' });
+            } else if (!bestMatch) {
+                errorDetails.push(v);
+            }
         });
-        totalScore += scoreTurn;
+
         const missing = currentAnswers.filter(a => !matchedAnswers.has(a));
         currentPartieBilan.push({ theme: thmLabel, score: scoreTurn, found: foundDetails, errors: errorDetails, missing: missing });
         history.push({ category: catLabel, score: scoreTurn });
@@ -11781,12 +11797,10 @@
         document.getElementById("bilan-container").style.display = "block";
         const list = document.getElementById("bilan-list");
         list.innerHTML = "";
+        
         currentPartieBilan.forEach(b => {
             let goodStr = b.found.map(f => {
-                let cls = 'res-good';
-                if(f.type === 'approx') cls = 'res-approx';
-                let label = f.pts > 0 ? '+'+f.pts : (f.type === 'duplicate' ? 'Doublon' : 'Doublon Approx');
-                return `<span class="${cls}">${f.original} (${label})</span>`;
+                return `<span class="res-good">${f.original} (+${f.pts})</span>`;
             }).join(", ");
             let wrongStr = b.errors.map(e => `<span class="res-wrong">${e}</span>`).join(", ");
             let missStr = b.missing.map(m => `<span class="res-missed">${m}</span>`).join(", ");
@@ -11800,14 +11814,18 @@
                     </div>
                 </div>`;
         });
+        
         document.getElementById("total-score-bilan-top").textContent = "Score Final : " + totalScore + " pts";
         document.getElementById("total-score-bilan").textContent = "Score Final : " + totalScore + " pts";
+        
         const pseudo = document.getElementById("pseudoInput").value;
         const now = new Date();
         const dateStr = now.getDate().toString().padStart(2, '0') + "." + (now.getMonth() + 1).toString().padStart(2, '0') + "." + now.getFullYear() + " " + now.getHours().toString().padStart(2, '0') + ":" + now.getMinutes().toString().padStart(2, '0');
+        
         allPartieScores.push({ pseudo, score: totalScore, date: dateStr });
         allPartieScores.sort((a,b) => b.score - a.score);
         localStorage.setItem("allPartieScores", JSON.stringify(allPartieScores));
+        
         updateStats(); updateTop10(); updateHistoryTable();
     }
 
