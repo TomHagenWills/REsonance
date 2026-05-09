@@ -14653,7 +14653,7 @@
         });
 
         const missing = currentAnswers.filter(a => !matchedAnswers.has(a));
-        currentPartieBilan.push({ theme: thmLabel, score: scoreTurn, found: foundDetails, errors: errorDetails, missing: missing });
+        currentPartieBilan.push({ category: catLabel, theme: thmLabel, score: scoreTurn, found: foundDetails, errors: errorDetails, missing: missing });
         history.push({ category: catLabel, score: scoreTurn });
         localStorage.setItem("themeHistory", JSON.stringify(history));
     }
@@ -14674,7 +14674,7 @@
             let missStr = b.missing.map(m => `<span class="res-missed">${m}</span>`).join(", ");
             list.innerHTML += `
                 <div class="bilan-item">
-                    <div class="bilan-header"><span>${b.theme}</span><b>${b.score} pts</b></div>
+                    <div class="bilan-header"><span><small style="color:var(--text-medium);">${b.category} :</small> ${b.theme}</span><b>${b.score} pts</b></div>
                     <div class="bilan-details">
                         ${goodStr ? `<div>✅ <b>Réponses :</b> ${goodStr}</div>` : ""}
                         ${wrongStr ? `<div>❌ <b>Fausses :</b> ${wrongStr}</div>` : ""}
@@ -14715,7 +14715,7 @@
         const l = document.getElementById("top10List"); l.innerHTML = "";
         if(allPartieScores.length === 0) { l.innerHTML = "<li>Aucune partie</li>"; return; }
         allPartieScores.slice(0, 10).forEach((p, i) => {
-            l.innerHTML += `<li><span>#${i+1} <b>${p.pseudo}</b></span><span style="color:var(--accent-color)">${p.score}</span></li>`;
+            l.innerHTML += `<li><span>#${i+1} <b>${p.pseudo}</b> <small style="color:var(--text-medium); font-size:0.8em;">(${p.date})</small></span><span style="color:var(--accent-color)">${p.score}</span></li>`;
         });
     }
 
