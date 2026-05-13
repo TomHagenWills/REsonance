@@ -51,6 +51,16 @@
         }
 
         .input-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 15px; margin: 20px 0; }
+        
+        /* Animation de transition pour le conteneur */
+        .fade-in {
+            animation: fadeIn 0.5s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
         .input-wrapper { position: relative; }
         
         input[type="text"] {
@@ -174,7 +184,7 @@
         </div>
     </div>
     
-    <div style="text-align:center; margin: 20px 0;">
+    <div id="theme-container" style="text-align:center; margin: 20px 0;">
         <span id="category-display" style="color: var(--text-medium); font-weight: bold; text-transform: uppercase; letter-spacing: 1px;"></span><br>
         <span id="theme-display" style="font-size: 2.2em; font-weight: bold; color: var(--primary-color);"></span><br>
         <button id="newThemeBtn" class="btn-secondary">Thème Suivant (DOUBLE ENTRÉE ou F9)</button>
@@ -236,6 +246,10 @@
             answers: ["Brandauer", "Hoffmann", "Kretschmann", "Lauterbach", "Möhring", "Noethen", "Ochsenknecht", "Schweiger", "Siddig", "Wepper"]
         },
         {
+            title: "Culture-Acteurs américains connus",
+            answers: ["Affleck", "Clooney", "Cruise", "Damon", "Depp", "Diesel", "Eastwood", "Evans", "Hanks", "Pitt", "Reeves", "Smith"]
+        },
+        {
             title: "Culture-Acteurs américains célèbres (noms de famille)",
             answers: ["Brando", "Costner", "Cruise", "De Niro", "Dean", "DiCaprio", "Eastwood", "Ford", "Freeman", "Hanks", "Hoffman", "Nicholson", "Pacino", "Pitt", "Redford", "Smith", "Stallone", "Wayne", "Willis"]
         },
@@ -288,6 +302,10 @@
             answers: ["Bronson", "Brynner", "Cooper", "Douglas", "Eastwood", "Elliott", "Fonda", "Ford", "Lancaster", "Mitchum", "Scott", "Stewart", "Van Cleef", "Wallach", "Wayne"]
         },
         {
+            title: "Culture-Acteurs de westerns spaghetti",
+            answers: ["Brega", "Cleef", "Clint Eastwood", "Cobos", "Gemma", "Kinski", "Landau", "Lollobrigida", "Milian", "Nero", "Palance", "Pellegrini", "Sancho", "Steffen", "Volonté", "Wood"]
+        },
+        {
             title: "Culture-Acteurs espagnols",
             answers: ["Banderas", "Bardem", "Casares", "Cascales", "Fernández", "Gómez", "López", "Molina", "Noriega", "Paredes", "San Juan", "Sanz", "Serrano", "Toledo", "Verdú"]
         },
@@ -309,7 +327,7 @@
         },
         {
             title: "Culture-Actrices allemandes (noms de famille)",
-            answers: ["Berben", "Böhm", "Flickenschildt", "Gedeck", "Harfouch", "Hoger", "Jentsch", "Kröner", "Köhler", "Lara", "Müller", "Neubauer", "Schneider", "Schrader", "Schüttler", "Thalbach", "Uhl", "Wokalek", "Zech"]
+            answers: ["Berben", "Böhm", "Dietrich", "Flickenschildt", "Gedeck", "Harfouch", "Hoger", "Jentsch", "Kröner", "Köhler", "Lara", "Müller", "Neubauer", "Schneider", "Schrader", "Schüttler", "Thalbach", "Uhl", "Wokalek", "Zech"]
         },
         {
             title: "Culture-Actrices américaines célèbres (noms de famille)",
@@ -318,6 +336,10 @@
         {
             title: "Culture-Actrices américaines du 20e siècle (noms de famille)",
             answers: ["Bacall", "Crawford", "Davis", "Dunaway", "Fonda", "Foster", "Garland", "Hepburn", "Kelly", "MacLaine", "Monroe", "Pfeiffer", "Roberts", "Streep", "Streisand", "Taylor"]
+        },
+        {
+            title: "Culture-Actrices ayant joué dans des films de science-fiction",
+            answers: ["Blanchett", "Bonham Carter", "Charlize Theron", "Farmiga", "Foster", "Hathaway", "Johansson", "Jones", "Lawrence", "Mara", "Portman", "Rapace", "Ryder", "Saldana", "Tilda Swinton", "Watson", "Weaver", "Weisz"]
         },
         {
             title: "Culture-Actrices britanniques",
@@ -372,12 +394,20 @@
             answers: ["Agneau", "Boeuf", "Chat", "Cheval", "Chien", "Cigale", "Cigogne", "Coq", "Corbeau", "Fourmi", "Grenouille", "Lion", "Lièvre", "Loup", "Ours", "Poule", "Rat", "Renard", "Tortue", "Âne"]
         },
         {
+            title: "Culture-Animaux des fables d'Esope",
+            answers: ["Aigle", "Alouette", "Boeuf", "Chat", "Chien", "Cigale", "Cigogne", "Corbeau", "Ecrevisse", "Fourmi", "Grenouille", "Lion", "Lièvre", "Loup", "Mouche", "Mule", "Renard", "Serpent", "Tortue"]
+        },
+        {
             title: "Culture-Architectes contemporains",
             answers: ["Foster", "Gaudí", "Gehry", "Hadid", "Herzog", "Koolhaas", "Le Corbusier", "Niemeyer", "Nouvel", "Pei", "Piano", "Portzamparc", "Rogers", "Rossi", "Tange", "Wright"]
         },
         {
             title: "Culture-Architectes de la Renaissance et du Baroque",
             answers: ["Alberti", "Bernini", "Borromini", "Bramante", "Brunelleschi", "Bullant", "Delorme", "Fontana", "Lescot", "Maderno", "Mansart", "Palladio", "Peruzzi", "Sangallo", "Vignole"]
+        },
+        {
+            title: "Culture-Architectes du mouvement Art Nouveau",
+            answers: ["Berlage", "Gaudí", "Guimard", "Horta", "Klimt", "Lalique", "Mucha", "Olbrich", "Van de Velde", "Wagner"]
         },
         {
             title: "Culture-Artistes de cabaret et music-hall français",
@@ -412,6 +442,10 @@
             answers: ["Babrius", "Bidpaï", "Florian", "Gay", "Gotthold Lessing", "Krylov", "La Fontaine", "Marie de France", "Nevelet", "Phedrus", "Pilpay", "Romulus", "Trilussa", "Verdizotti", "Villon", "Ésope"]
         },
         {
+            title: "Culture-Auteurs de littérature africaine",
+            answers: ["Achebe", "Adichie", "Beti", "Beyala", "Boni", "Coetzee", "Diop", "Gordimer", "Kane", "Kourouma", "Laye", "Mabanckou", "Ngugi", "Sembène", "Senghor", "Sony Labou Tansi"]
+        },
+        {
             title: "Culture-Auteurs de littérature fantastique",
             answers: ["Asimov", "Barrie", "Borges", "Bradbury", "Carroll", "Dahl", "Ende", "King", "Lewis", "Lovecraft", "Perrault", "Poe", "Shelley", "Stoker", "Tolkien", "Verne", "Wells", "Wilde"]
         },
@@ -440,12 +474,24 @@
             answers: ["Clancy", "Deighton", "Fleming", "Follett", "Forsyth", "Greene", "Kerr", "Larsson", "Le Carré", "Lieutenant X", "Ludlum", "McCarry", "Silva", "Steinhauer", "Vidocq", "Volkoff"]
         },
         {
+            title: "Culture-Auteurs de romans d'espionnage",
+            answers: ["Ambler", "Boyd", "Buchan", "Deighton", "Fleming", "Forsyth", "Greene", "Guillou", "Higgins", "Ignatius", "Le Carré", "Ludlum", "Macintyre", "Silva", "Vince Flynn"]
+        },
+        {
+            title: "Culture-Auteurs de romans dystopiques",
+            answers: ["Atwood", "Bradbury", "Burgess", "Dick", "Dostoïevski", "Forster", "Huxley", "Ishiguro", "Kafka", "Le Guin", "London", "Orwell", "Pohl", "Rand", "Vonnegut", "Zamiatine"]
+        },
+        {
             title: "Culture-Auteurs de romans gothiques",
             answers: ["Blackwood", "Du Maurier", "Hill", "Jackson", "James", "Le Fanu", "Lewis", "Lovecraft", "Maturin", "Poe", "Radcliffe", "Rice", "Shelley", "Stoker", "Walpole"]
         },
         {
             title: "Culture-Auteurs de romans gothiques modernes",
             answers: ["Barker", "Blackwood", "Gaiman", "Hill", "James", "King", "Koontz", "Le Fanu", "Machado", "Moreno", "Priest", "Rice", "Shelley", "Simmons", "Stoker", "Straub", "Ward"]
+        },
+        {
+            title: "Culture-Auteurs de romans graphiques",
+            answers: ["Clowes", "Crumb", "Delisle", "Eisner", "Gipi", "Guibert", "Hergé", "Mazzucchelli", "Moore", "Satrapi", "Seth", "Sfar", "Simmonds", "Spiegelman", "Ware"]
         },
         {
             title: "Culture-Auteurs de romans historiques",
@@ -516,8 +562,20 @@
             answers: ["Baker", "Bland", "Brown", "Guy", "Hooker", "Hurt", "James", "Johnson", "King", "Morgan", "Parker", "Reed", "Rush", "Snow", "Taylor", "Waters", "Wolf"]
         },
         {
+            title: "Culture-Chanteurs de blues américains",
+            answers: ["BB King", "Bland", "Broonzy", "Burnett", "Butterfield", "Dixon", "Guy", "Hooker", "Hopkins", "House", "Howlin Wolf", "Jefferson", "Johnson", "Muddy Waters", "Rush", "Waters"]
+        },
+        {
             title: "Culture-Chanteurs de country américains",
             answers: ["Brooks", "Cash", "Cline", "Haggard", "Jackson", "Jennings", "Jones", "Lynn", "McEntire", "Nelson", "Parton", "Pride", "Strait", "Tucker", "Williams", "Wynette"]
+        },
+        {
+            title: "Culture-Chanteurs de flamenco",
+            answers: ["Camarón", "Chocolate", "El Lebrijano", "Enrique Morente", "Farruco", "Fosforito", "Fosforito", "Ketama", "La Niña de los Peines", "Lole Montoya", "Mairena", "Manolo Caracol", "Morente", "Paco de Lucía", "Terremoto", "Tomás Pavón"]
+        },
+        {
+            title: "Culture-Chanteurs de reggae",
+            answers: ["Alcapone", "Barrington Levy", "Beenie Man", "Beres Hammond", "Bunny Wailer", "Cliff", "Culture", "Dekker", "Marley", "Ranking Trevor", "Shabba Ranks", "Shaggy", "Sizzla", "Tosh", "Yellowman"]
         },
         {
             title: "Culture-Chanteurs de rock britanniques",
@@ -684,6 +742,10 @@
             answers: ["Adam", "Bernstein", "Chostakovitch", "Copland", "Debussy", "Delibes", "Falla", "Glazounov", "Khatchatourian", "Minkus", "Prokofiev", "Ravel", "Satie", "Stravinski", "Tchaïkovski"]
         },
         {
+            title: "Culture-Compositeurs de musique de ballet",
+            answers: ["Adam", "Bartók", "Britten", "Chopin", "Constant", "Delibes", "Glazounov", "Khatchaturian", "Lanchbery", "Messager", "Minkus", "Prokofiev", "Pugni", "Ravel", "Saint-Saëns", "Stravinsky", "Tchaïkovski"]
+        },
+        {
             title: "Culture-Compositeurs de musique de chambre",
             answers: ["Bach", "Bartók", "Beethoven", "Brahms", "Chopin", "Debussy", "Dvořák", "Fauré", "Haydn", "Janáček", "Mendelssohn", "Mozart", "Ravel", "Schubert", "Schumann", "Shostakovich"]
         },
@@ -694,6 +756,10 @@
         {
             title: "Culture-Compositeurs de musique de jeux vidéo",
             answers: ["Chikoto", "Hiroki", "Ishikawa", "Koji Kondo", "Koshiro", "Mitsuda", "Nakamura", "Nemcova", "Shimomura", "Sugiyama", "Suzuki", "Tanaka", "Uematsu", "Yamane", "Yamaoka"]
+        },
+        {
+            title: "Culture-Compositeurs de musique de pub et jingles",
+            answers: ["Bacharach", "Barry", "Bernstein", "David", "Ennio Morricone", "Goldsmith", "Jarre", "Jones", "Legrand", "Mancini", "Newley", "Nilsson", "Popp", "Sager", "Schifrin"]
         },
         {
             title: "Culture-Compositeurs de musique minimaliste",
@@ -772,16 +838,44 @@
             answers: ["Acajou", "Argent", "Auburn", "Blanc", "Blond", "Blond cendré", "Blond platine", "Blond vénitien", "Bordeaux", "Brun", "Châtain", "Gris", "Jais", "Noir", "Noir corbeau", "Poivre et sel", "Roux"]
         },
         {
+            title: "Culture-Couleurs et tons (A-B)",
+            answers: ["Abricot", "Acajou", "Acier", "Aigue-marine", "Albâtre", "Alezan", "Amarante", "Ambre", "Améthyste", "Anthracite", "Ardoise", "Argent", "Aubergine", "Auburn", "Aurore", "Azur", "Beige", "Bisque", "Bistre", "Bitume", "Bordeaux", "Brique", "Bronze", "Brun"]
+        },
+        {
             title: "Culture-Couleurs et tons (A-D)",
             answers: ["Aigue-marine", "Albâtre", "Amarante", "Ambre", "Anthracite", "Auburn", "Azur", "Beige", "Bis", "Blanc", "Bleu", "Bordeaux", "Brique", "Bronze", "Brun", "Caramel", "Chocolat", "Châtain", "Corail", "Cramoisi", "Cyan", "Céladon", "Doré"]
+        },
+        {
+            title: "Culture-Couleurs et tons (C-F)",
+            answers: ["Café", "Camée", "Caramel", "Carmin", "Carotte", "Celadon", "Cerise", "Chamois", "Champagne", "Chartreuse", "Chocolat", "Châtaigne", "Cinabre", "Citron", "Cognac", "Corail", "Cramoisi", "Crème", "Cuivre", "Cyan", "Doré", "Ecarlate", "Ecru", "Emeraude", "Fauve", "Feldgrau", "Fraise", "Framboise", "Fuchsia", "Fumée"]
         },
         {
             title: "Culture-Couleurs et tons (E-M)",
             answers: ["Fauve", "Fuchsia", "Givré", "Grenat", "Gris", "Indigo", "Ivoire", "Jaune", "Kaki", "Lavande", "Lichen", "Lilas", "Magenta", "Malachite", "Marine", "Marron", "Mauve", "Menthe", "Moutarde", "Ébène", "Écarlate", "Émeraude"]
         },
         {
+            title: "Culture-Couleurs et tons (G-L)",
+            answers: ["Garance", "Glauque", "Grenadine", "Grenat", "Groseille", "Grège", "Havane", "Incarnat", "Indigo", "Isabelle", "Ivoire", "Jade", "Jonquille", "Kaki", "Lavande", "Lilas", "Lime", "Lin"]
+        },
+        {
+            title: "Culture-Couleurs et tons (M-P)",
+            answers: ["Magenta", "Malachite", "Mandarine", "Marron", "Mauve", "Melon", "Miel", "Moutarde", "Nacré", "Noisette", "Ocre", "Olive", "Olivâtre", "Or", "Oranger", "Orchidée", "Outremer", "Paille", "Parme", "Pastel", "Perle", "Pervenche", "Pistache", "Pivoine", "Platine", "Plomb", "Pourpre", "Prune", "Pêche"]
+        },
+        {
             title: "Culture-Couleurs et tons (N-Z)",
             answers: ["Nacré", "Noir", "Ocre", "Olive", "Opalin", "Or", "Orange", "Prune", "Pêche", "Rose", "Rouge", "Rubis", "Sable", "Safran", "Saumon", "Sienne", "Sépia", "Taupe", "Terracotta", "Turquoise", "Vert", "Violet", "Zinzolin"]
+        },
+        {
+            title: "Culture-Couleurs et tons (R-Z)",
+            answers: ["Rouille", "Roux", "Rubis", "Réseda", "Sable", "Safran", "Saphir", "Saumon", "Sienna", "Silex", "Soufre", "Sépia", "Tabac", "Taupe", "Terracotta", "Tilleul", "Tomette", "Topaze", "Tourterelle", "Turquoise", "Vanille", "Vermeil", "Vermillon", "Violine", "Zinzolin"]
+        },
+        {
+            title: "Culture-Courants architecturaux du 20e siècle",
+            answers: ["Art déco", "Brutalisme", "Constructivisme", "Déconstructivisme", "Fonctionnalisme", "Futurisme", "High-tech", "Modernisme", "Métabolisme", "Organic", "Postmodernisme", "Rationalisme", "Structuralisme"]
+        },
+        {
+            title: "Culture-Courants de la peinture abstraite",
+            answers: ["Action painting", "Art brut", "Art concret", "Art informel", "Cobra", "Color field", "Expressionnisme", "Fauvisme", "Fluxus", "Gestuell", "Hard edge", "Kubisme", "Lyrique", "Minimalisme", "Néoplasticisme", "Op art", "Suprématisme", "Tachisme"]
         },
         {
             title: "Culture-Courants littéraires",
@@ -894,6 +988,10 @@
         {
             title: "Culture-Femmes peintres (noms de famille)",
             answers: ["Anguissola", "Bonheur", "Bourgeois", "Carr", "Cassatt", "Chicago", "Frankenthal", "Gentilleschi", "Höch", "Kahlo", "Kollwitz", "Laurencin", "Morisot", "Neel", "O'Keeffe", "Ringgold", "Valadon"]
+        },
+        {
+            title: "Culture-Femmes pianistes célèbres",
+            answers: ["Argerich", "Grimaud", "Haskil", "Hewitt", "Imogen Cooper", "Jocelyne Labylle", "Kinderman", "Kirchschlager", "Labèque", "Lortie", "Lugansky", "Nikolayeva", "Pires", "Uchida", "Yudina"]
         },
         {
             title: "Culture-Festivals de cinéma",
@@ -1049,7 +1147,7 @@
         },
         {
             title: "Culture-Génies de l'Humanité",
-            answers: ["Archimède", "Aristote", "Curie", "Darwin", "Einstein", "Franklin", "Galilée", "Goethe", "Michel-Ange", "Mozart", "Newton", "Platon", "Shakespeare", "Tesla", "Vinci"]
+            answers: ["Archimède", "Aristote", "Avicenne", "Bach", "Beethoven", "Copernic", "Curie", "Darwin", "De Vinci", "Einstein", "Euler", "Franklin", "Freud", "Galilée", "Gauss", "Goethe", "Homère", "Kant", "Kepler", "Laplace", "Leibniz", "Michel-Ange", "Mozart", "Newton", "Pascal", "Platon", "Pythagore", "Rembrandt", "Shakespeare", "Tesla"]
         },
         {
             title: "Culture-Humoristes français",
@@ -1412,6 +1510,10 @@
             answers: ["Ascanio", "Bastien", "Don Giovanni", "Idoménée", "L'enlèvement", "La clémence de Titus", "La finta giardiniera", "Le directeur", "Le songe de Scipion", "Les noces de Figaro", "Lucio Silla", "Mitridate", "Zaïde"]
         },
         {
+            title: "Culture-Opéras de Verdi",
+            answers: ["Attila", "Aïda", "Don Carlos", "Ernani", "Falstaff", "Forza del destino", "Luisa Miller", "Macbeth", "Nabucco", "Otello", "Rigoletto", "Simon Boccanegra", "Traviata", "Trovatore", "Vêpres siciliennes"]
+        },
+        {
             title: "Culture-Opéras italiens",
             answers: ["Aida", "Barbier de Séville", "Bohème", "Carmen", "Cavalleria rusticana", "Don Giovanni", "La Traviata", "Norma", "Otello", "Rigoletto", "Tosca", "Trovatore", "Turandot"]
         },
@@ -1513,7 +1615,7 @@
         },
         {
             title: "Culture-Pays visités par Tintin",
-            answers: ["Algérie", "Belgique", "Bordurie", "Chine", "Congo", "Inde", "Khemed", "Nuevo Rico", "Pérou", "San Theodoros", "Sao Rico", "Syldavie", "Tibet", "URSS", "Égypte", "États-Unis"]
+            answers: ["Algérie", "Amérique", "Belgique", "Bordurie", "Chine", "Congo", "Inde", "Khemed", "Nuevo Rico", "Pérou", "San Theodoros", "Sao Rico", "Syldavie", "Tibet", "URSS", "Égypte", "États-Unis"]
         },
         {
             title: "Culture-Peintres abstraits",
@@ -1540,6 +1642,22 @@
             answers: ["Botticelli", "Caravage", "Chagall", "Cézanne", "Dalí", "De Vinci", "Degas", "Gauguin", "Goya", "Kandinsky", "Klimt", "Manet", "Matisse", "Michel-Ange", "Monet", "Munch", "Picasso", "Pollock", "Rembrandt", "Renoir", "Rubens", "Toulouse-Lautrec", "Turner", "Van Gogh", "Vermeer", "Vélasquez", "Warhol"]
         },
         {
+            title: "Culture-Peintres célèbres (A-D)",
+            answers: ["Aivazovsky", "Arcimboldo", "Bacon", "Banksy", "Basquiat", "Bellini", "Bosch", "Botticelli", "Boucher", "Boudin", "Braque", "Canaletto", "Caravage", "Chagall", "Chardin", "Chirico", "Constable", "Corot", "Courbet", "Cranach", "Cézanne", "Dalí", "Daumier", "David", "Degas", "Delacroix", "Derain", "Dürer"]
+        },
+        {
+            title: "Culture-Peintres célèbres (E-L)",
+            answers: ["El Greco", "Ernst", "Fragonard", "Frida Kahlo", "Friedrich", "Gainsborough", "Gauguin", "Giotto", "Goya", "Grünewald", "Gustave Moreau", "Géricault", "Hockney", "Hogarth", "Hokusai", "Hopper", "Ingres", "Kandinsky", "Klee", "Klimt", "Lautrec", "Le Nain", "Lippi", "Léger"]
+        },
+        {
+            title: "Culture-Peintres célèbres (M-R)",
+            answers: ["Magritte", "Manet", "Mantegna", "Matisse", "Millais", "Miró", "Modigliani", "Mondrian", "Monet", "Munch", "Pissarro", "Pollock", "Pontormo", "Poussin", "Raphael", "Rembrandt", "Renoir", "Repin", "Reynolds", "Rigaud", "Rivera", "Rockwell", "Rothko", "Rubens"]
+        },
+        {
+            title: "Culture-Peintres célèbres (S-W)",
+            answers: ["Seurat", "Signac", "Sisley", "Soutine", "Sérusier", "Tiepolo", "Tintoret", "Titien", "Turner", "Uccello", "Utamaro", "Utrillo", "Van Dyck", "Van Eyck", "Van Gogh", "Velázquez", "Vermeer", "Veronese", "Vigée-Lebrun", "Vuillard", "Warhol", "Watteau", "Whistler"]
+        },
+        {
             title: "Culture-Peintres de l'art nouveau",
             answers: ["Beardsley", "Chéret", "Grasset", "Hodler", "Ibels", "Klimt", "Moreau", "Moser", "Mucha", "Steinlen", "Toulouse-Lautrec"]
         },
@@ -1550,6 +1668,10 @@
         {
             title: "Culture-Peintres de la Renaissance allemande",
             answers: ["Altdorfer", "Amberger", "Baldung", "Beham", "Burgkmair", "Cranach", "Dürer", "Grünewald", "Holbein", "Huber", "Kulmbach", "Pacher", "Ratgeb", "Stimmer", "Strigel", "Vischer"]
+        },
+        {
+            title: "Culture-Peintres de marines",
+            answers: ["Aivazovsky", "Boudin", "Chambers", "Constable", "Gudin", "Homer", "Isabey", "Jongkind", "Monet", "Pocock", "Roux", "Signac", "Turner", "Van de Velde", "Vernet"]
         },
         {
             title: "Culture-Peintres du 19e siècle",
@@ -1624,6 +1746,10 @@
             answers: ["Böcklin", "Klimt", "Moreau", "Munch", "Redon", "Stuck"]
         },
         {
+            title: "Culture-Personnages Pixar",
+            answers: ["Arlo", "Buzz", "Dory", "Dug", "Edna", "Flick", "Hamm", "Jessie", "Luca", "Marlin", "Nemo", "Remy", "Sully", "Woody"]
+        },
+        {
             title: "Culture-Personnages de Babar",
             answers: ["Alexandre", "Arthur", "Babar", "Bébelle", "Cornelius", "Céleste", "Flore", "Isabelle", "La vieille dame", "Pom", "Rataxès", "Zéphir"]
         },
@@ -1632,8 +1758,8 @@
             answers: ["Andrea", "Brandon", "Brenda", "Cindy", "David", "Donna", "Dylan", "Jim", "Kelly", "Nat", "Scott", "Steve", "Valerie"]
         },
         {
-            title: "Culture-Personnages de Dallas",
-            answers: ["Bobby", "Clayton", "Cliff", "Ellie", "Gary", "J.R.", "Jenna", "Jock", "Lucy", "Pamela", "Patricia", "Ray", "Sue Ellen", "Valene"]
+            title: "Culture-Personnages de Dallas (prénoms)",
+            answers: ["Bobby", "Clayton", "Cliff", "Donna", "Ellie", "Gary", "J.R.", "Jenna", "Jock", "Lucy", "Pamela", "Patricia", "Ray", "Sue Ellen", "Valene"]
         },
         {
             title: "Culture-Personnages de Disney",
@@ -1648,12 +1774,20 @@
             answers: ["Drago Malefoy", "Dumbledore", "Hagrid", "Harry Potter", "Hermione Granger", "Neville Londubat", "Ron Weasley", "Severus Rogue", "Sirius Black", "Voldemort"]
         },
         {
+            title: "Culture-Personnages de Harry Potter",
+            answers: ["Dragard", "Dumbledore", "Granger", "Hermione", "Lupin", "Malefoy", "Maugrey", "McGonagall", "Mondingus", "Neville", "Pettigrow", "Potter", "Rogue", "Sirius", "Voldemort", "Weasley"]
+        },
+        {
             title: "Culture-Personnages de Molière",
             answers: ["Alceste", "Angélique", "Argan", "Arnolphe", "Célimène", "Dom Juan", "Dorine", "Harpagon", "Jourdain", "Monsieur Jourdain", "Orgon", "Philaminte", "Scapin", "Sganarelle", "Tartuffe", "Toinette"]
         },
         {
             title: "Culture-Personnages de Shakespeare",
             answers: ["Bottom", "Béatrice", "Bénédict", "Caliban", "Cordélia", "Desdémone", "Falstaff", "Hamlet", "Iago", "Juliette", "Lady Macbeth", "Lear", "Macbeth", "Mercutio", "Obéron", "Ophélie", "Othello", "Portia", "Prospero", "Puck", "Richard III", "Roméo", "Rosalinde", "Shylock", "Titania"]
+        },
+        {
+            title: "Culture-Personnages de Star Wars",
+            answers: ["Chewbacca", "Dark Vador", "Han Solo", "Jabba", "Kenobi", "Lando", "Leia", "Luke", "Mace Windu", "Palpatine", "Qui-Gon", "R2D2", "Rey", "Solo", "Yoda"]
         },
         {
             title: "Culture-Personnages de Tintin",
@@ -1712,6 +1846,10 @@
             answers: ["Abraracourcix", "Agecanonix", "Assurancetourix", "Astérix", "Bonnemine", "Cléopâtre", "Cétautomatix", "Falbala", "Idéfix", "Jules César", "Obélix", "Ordralfabétix", "Panoramix"]
         },
         {
+            title: "Culture-Personnages de la série Friends",
+            answers: ["Bing", "Buffay", "Geller", "Green", "Janice", "Joey", "Monica", "Phoebe", "Rachel", "Ross", "Tribbiani"]
+        },
+        {
             title: "Culture-Personnages de la série Stranger Things",
             answers: ["Byers", "Dustin", "Eleven", "Hargrove", "Harrington", "Henderson", "Hopper", "Max", "Mike", "Murray", "Robin", "Sinclair", "Wheeler"]
         },
@@ -1768,12 +1906,20 @@
             answers: ["Alain", "Bachelard", "Badiou", "Baudrillard", "Bergson", "Comte", "Deleuze", "Derrida", "Descartes", "Diderot", "Foucault", "Jankélévitch", "Levinas", "Lyotard", "Merleau-Ponty", "Montaigne", "Montesquieu", "Pascal", "Ricoeur", "Rousseau", "Sartre", "Voltaire", "Weil"]
         },
         {
+            title: "Culture-Photographes de reportage",
+            answers: ["Bourke-White", "Burrows", "Capa", "Cartier-Bresson", "Davidson", "Doisneau", "Erwitt", "Eugene Smith", "Frank", "Lange", "McCullin", "Nachtwey", "Riboud", "Salgado", "Sebastião", "Seymour", "Ut"]
+        },
+        {
             title: "Culture-Photographes spécialisés dans le portrait",
             answers: ["Arbus", "Avedon", "Bailey", "Cartier-Bresson", "Dahl-Wolfe", "Gisèle Freund", "Halsman", "Hujar", "Karsh", "Leibovitz", "Lindbergh", "Mapplethorpe", "McCurry", "Nadar", "Newton", "Penn", "Platon", "Ritts", "Sander", "Testino"]
         },
         {
             title: "Culture-Pianistes classiques",
             answers: ["Argerich", "Ashkenazy", "Barenboim", "Brendel", "Cziffra", "Gould", "Horowitz", "Kissin", "Liszt", "Pogorelich", "Rubinstein", "Zimmerman"]
+        },
+        {
+            title: "Culture-Pianistes célèbres",
+            answers: ["Arrau", "Ashkenazy", "Barenboim", "Brendel", "Chopin", "Cortot", "Cziffra", "Gieseking", "Gilels", "Gould", "Grimaud", "Haskil", "Horowitz", "Jarrett", "Kissin", "Lang Lang", "Lipatti", "Liszt", "Michelangeli", "Perahia", "Pollini", "Rachmaninov", "Richter", "Rubinstein", "Zimerman"]
         },
         {
             title: "Culture-Picasso",
@@ -1810,10 +1956,6 @@
         {
             title: "Culture-Poètes français (M-R)",
             answers: ["Maeterlinck", "Mallarmé", "Marbeuf", "Marot", "Masson", "Michaux", "Milosz", "Mirabeau", "Moréas", "Musset", "Nerval", "Nothomb", "Orizet", "Perse", "Ponge", "Prévert", "Péguy", "Queneau", "Racine", "Raimbaut", "Rimbaud", "Roche", "Rollinat", "Ronsard", "Rostand", "Roucher", "Roy", "Régnier"]
-        },
-        {
-            title: "Culture-Poètes français (S-Z)",
-            answers: ["Saint-Amant", "Saint-John Perse", "Sainte-Beuve", "Segalen", "Senghor", "Supervielle", "Tardieu", "Théophile", "Toulet", "Tristan", "Valéry", "Verhaeren", "Verlaine", "Vian", "Viau", "Vigny", "Vildrac", "Villon", "Voiture", "Zola", "Zévaco"]
         },
         {
             title: "Culture-Poètes français du 19e siècle",
@@ -1880,6 +2022,10 @@
             answers: ["Besson", "Burton", "Cameron", "Chabrol", "Coppola", "Dolan", "Godard", "Hitchcock", "Jeunet", "Kubrick", "Lelouch", "Lucas", "Nolan", "Ozon", "Rohmer", "Scorsese", "Spielberg", "Tarantino", "Truffaut", "Varda"]
         },
         {
+            title: "Culture-Réalisateurs de films d'horreur",
+            answers: ["Argento", "Carpenter", "Clive Barker", "Corman", "Craven", "De Palma", "Flanagan", "Hooper", "Kubrick", "Lynch", "Polanski", "Romero", "Roth", "Wan", "Wheatley", "Zombie"]
+        },
+        {
             title: "Culture-Réalisateurs de films noirs",
             answers: ["Aldrich", "Dassin", "Dmytryk", "Fuller", "Garnett", "Hawks", "Huston", "Lang", "Mann", "Milestone", "Preminger", "Ray", "Siodmak", "Tourneur", "Wilder"]
         },
@@ -1894,6 +2040,10 @@
         {
             title: "Culture-Réalisateurs italiens classiques",
             answers: ["Antonioni", "Fellini", "Leone", "Pasolini", "Rossellini", "Taviani", "Visconti", "Wertmüller", "Zeffirelli"]
+        },
+        {
+            title: "Culture-Réalisateurs italiens classiques",
+            answers: ["Antonioni", "Bertolucci", "Comencini", "De Sica", "Fellini", "Ferreri", "Leone", "Monicelli", "Pasolini", "Pontecorvo", "Risi", "Rossellini", "Scola", "Taviani", "Visconti", "Zampa"]
         },
         {
             title: "Culture-Réalisateurs japonais",
@@ -2005,7 +2155,7 @@
         },
         {
             title: "Culture-Types de danse moderne",
-            answers: ["Breakdance", "Contemporain", "Hip-hop", "Jazz", "Salsa", "Street dance", "Tango", "Zumba"]
+            answers: ["Bachata", "Breakdance", "Cha-cha-cha", "Contemporain", "Electro", "Hip-hop", "House", "Jazz", "Jumpstyle", "Krump", "Lindy Hop", "Merengue", "Popping", "Ragga", "Salsa", "Street dance", "Swing", "Tango", "Voguing", "Zumba"]
         },
         {
             title: "Culture-Vignobles et régions viticoles du monde",
@@ -2061,7 +2211,7 @@
         },
         {
             title: "Culture-Écrivains dont le nom commence par L",
-            answers: ["La Bruyère", "La Fontaine", "Lamartine", "Lawrence", "Le Clézio", "Le Guin", "Leiris", "Lewis", "London", "Lovecraft"]
+            answers: ["La Bruyère", "La Fayette", "La Fontaine", "Laclos", "Lamartine", "Lawrence", "Le Carré", "Le Clézio", "Le Guin", "Leiris", "Lermontov", "Lewis", "London", "Lorca", "Loti", "Lovecraft", "Lucan", "Lully"]
         },
         {
             title: "Culture-Écrivains dont le nom commence par M",
@@ -2276,6 +2426,10 @@
             answers: ["Cobra", "Crapaud", "Diodon", "Grenouille", "Hérisson", "Lézard à collerette", "Poisson-coffre", "Poisson-globe", "Porc-épic", "Serpent à sonnette"]
         },
         {
+            title: "EXPERT-Animaux qui vivent dans les volcans ou zones géothermiques",
+            answers: ["Bactérie extrêmophile", "Crabe yéti", "Crevette des abysses", "Grillon des laves", "Limace des sources chaudes", "Nématode", "Pectinereis glandulosa", "Poisson des glaces", "Polychète tubicole", "Raie des profondeurs", "Requin dormeur", "Scolopendre de mer", "Ver de Pompéi"]
+        },
+        {
             title: "EXPERT-Animaux transparents",
             answers: ["Amphipode", "Anguille de verre", "Crevette fantôme", "Cténophore", "Escargot de verre", "Grenouille de verre", "Hydre", "Larve de langouste", "Méduse", "Papillon glasswing", "Pieuvre fantôme", "Poisson des abysses", "Poisson-verre", "Sagitta", "Salpe", "Vénérupis"]
         },
@@ -2312,6 +2466,10 @@
             answers: ["Azéma", "Boileau", "Bouwens", "Dondel", "Expert", "Fischer", "Labro", "Laprade", "Mallet-Stevens", "Patout", "Perret", "Plumet", "Sauvage", "Umbdenstock", "Viard"]
         },
         {
+            title: "EXPERT-Architectes du mouvement Brutaliste",
+            answers: ["Aalto", "Banham", "Bo Bardi", "Goldfinger", "Kahn", "Le Corbusier", "Pevsner", "Rudofsky", "Smithson", "Tange"]
+        },
+        {
             title: "EXPERT-Architectes français",
             answers: ["Baltard", "Bofill", "Garnier", "Guimard", "Haussmann", "Le Corbusier", "Nouvel", "Perrault", "Portzamparc", "Vauban", "Viollet-le-Duc"]
         },
@@ -2338,6 +2496,14 @@
         {
             title: "EXPERT-Astronautes",
             answers: ["Aldrin", "Armstrong", "Cernan", "Collins", "Cooper", "Gagarin", "Glenn", "Jemison", "Leonov", "Lovell", "Ride", "Shepard", "Tereshkova", "Tito", "Yang"]
+        },
+        {
+            title: "EXPERT-Auteurs de romans policiers nordiques",
+            answers: ["Adler-Olsen", "Arnaldur Indridason", "Camilla Läckberg", "Fossum", "Gunnar Staalesen", "Jo Nesbø", "Kepler", "Larsson", "Läckberg", "Mankell", "Marklund", "Mons Kallentoft", "Theorin", "Tursten", "Wahlöö"]
+        },
+        {
+            title: "EXPERT-Auteurs de science-fiction japonaise",
+            answers: ["Abe", "Enjo", "Haikasoru", "Hirose", "Itoh", "Kaoru Kurimoto", "Kawamata", "Ogawa", "Sakyō Komatsu", "Shinichi Hoshi", "Tsutsui", "Yamamoto", "Yamao"]
         },
         {
             title: "EXPERT-Bandes dessinées japonaises célèbres",
@@ -2420,8 +2586,16 @@
             answers: ["Almeida", "Banza", "Camamané", "Carminho", "Casimiro", "Duarte", "Ferreira", "Gonçalves", "Lamares", "Lopes-Graça", "Moutinho", "Ramos", "Ribeiro", "Rocha", "Rodrigues", "Zambujo"]
         },
         {
+            title: "EXPERT-Chanteurs de musique concrète",
+            answers: ["Bayle", "Boulez", "Dhomont", "Ferrari", "Henry", "Jarre", "Kraftwerk", "Langlois", "Mache", "Nono", "Normandeau", "Parmegiani", "Schaeffer", "Stockhausen", "Truax", "Xenakis"]
+        },
+        {
             title: "EXPERT-Chanteuses de Fado (noms de famille)",
             answers: ["Amendoeira", "Branco", "Camané", "Carane", "Carminho", "Duarte", "Ferreira", "Guerreiro", "João", "Katane", "Mariza", "Misia", "Moura", "Moutinho", "Pontes", "Rodrigues", "Tavares", "da Conceição", "do Carmo"]
+        },
+        {
+            title: "EXPERT-Cinéastes coréens",
+            answers: ["Bong Joon-ho", "Chang", "Hong", "Im Kwon-taek", "Kim", "Kim Ki-duk", "Lee Chang-dong", "Na Hong-jin", "Oh", "Park Chan-wook", "Park Tae-won", "Ryoo", "Shin", "Yeon"]
         },
         {
             title: "EXPERT-Classification des roches sédimentaires",
@@ -2464,6 +2638,10 @@
             answers: ["ADN", "ARN", "Appareil de Golgi", "Cytoplasme", "Lysosome", "Membrane", "Mitochondrie", "Noyau", "Ribosome", "Réticulum"]
         },
         {
+            title: "EXPERT-Composants de la cellule nerveuse",
+            answers: ["Axone", "Cellule de Schwann", "Corps cellulaire", "Cône d'implantation", "Dendrite", "Fente synaptique", "Gaine de myéline", "Microglie", "Neurofilament", "Nodule de Ranvier", "Noyau", "Post-synapse", "Pré-synapse", "Terminaison", "Vésicule"]
+        },
+        {
             title: "EXPERT-Composants de la cellule végétale",
             answers: ["Appareil de Golgi", "Chloroplaste", "Cytoplasme", "Membrane", "Mitochondrie", "Noyau", "Paroi cellulosique", "Peroxysome", "Plasmodesme", "Ribosome", "Réticulum", "Vacuole"]
         },
@@ -2478,6 +2656,10 @@
         {
             title: "EXPERT-Compositeurs d'opéra italiens",
             answers: ["Bellini", "Donizetti", "Leoncavallo", "Mascagni", "Monteverdi", "Puccini", "Rossini", "Verdi"]
+        },
+        {
+            title: "EXPERT-Compositeurs de musique minimaliste",
+            answers: ["Adams", "Andriessen", "Bryars", "Glass", "Gordon", "Lang", "Monk", "Nyman", "Reich", "Riley", "Tenney"]
         },
         {
             title: "EXPERT-Concepts de thermodynamique",
@@ -2518,6 +2700,10 @@
         {
             title: "EXPERT-Courants de pensée",
             answers: ["Empirisme", "Existentialisme", "Humanisme", "Idéalisme", "Matérialisme", "Nihilisme", "Positivisme", "Pragmatisme", "Rationalisme"]
+        },
+        {
+            title: "EXPERT-Courants en philosophie des sciences",
+            answers: ["Conventionnalisme", "Empirisme", "Falsificationnisme", "Holisme", "Instrumentalisme", "Kuhnisme", "Naturalisme", "Nihilisme", "Opérationnalisme", "Positivisme", "Pragmatisme", "Rationalisme", "Relativisme", "Réalisme", "Réductionnisme", "Structuralisme"]
         },
         {
             title: "EXPERT-Courants philosophiques antiques",
@@ -2636,6 +2822,10 @@
             answers: ["Cambrien", "Crétacé", "Dévonien", "Jurassique", "Néoprotérozoïque", "Permien", "Précambrien", "Silurien", "Tertiaire", "Trias"]
         },
         {
+            title: "EXPERT-Espèces de coraux",
+            answers: ["Acropora", "Alcyonaire", "Antipathaire", "Caryophyllie", "Caulastrea", "Cervicorne", "Elkhorn", "Favie", "Gorgone", "Lobophyllie", "Millepora", "Montipora", "Orgue de mer", "Pocillopora", "Porite", "Stylophora", "Tubastrea"]
+        },
+        {
             title: "EXPERT-Espèces menacées d'extinction",
             answers: ["Gorille", "Lémurien", "Orang-outan", "Panda", "Rhinocéros blanc", "Tigre", "Tortue luth"]
         },
@@ -2645,7 +2835,7 @@
         },
         {
             title: "EXPERT-Explorateurs français",
-            answers: ["Bougainville", "Cartier", "Champlain", "Charcot", "Cousteau", "La Pérouse", "Tasman"]
+            answers: ["Bougainville", "Cartier", "Champlain", "Charcot", "Cousteau", "De Gonneville", "Dumont d'Urville", "Duperrey", "Freycinet", "La Condamine", "La Pérouse", "La Salle", "La Vérendrye", "Lapérouse", "Lesseps", "Marchand", "Nicollet", "Tasman", "Verrazane"]
         },
         {
             title: "EXPERT-Expressions françaises avec le  mot \"pomme\"",
@@ -2664,12 +2854,24 @@
             answers: ["Awakenings", "Coachella", "Electric Daisy Carnival", "Mysteryland", "Sonar", "Time Warp", "Tomorrowland", "Ultra Music Festival", "Untold", "Ushuaïa"]
         },
         {
+            title: "EXPERT-Figures de la commedia dell'arte",
+            answers: ["Arlecchino", "Balanzone", "Brighella", "Capitano", "Colombina", "Coviello", "Dottore", "Flaminia", "Innamorati", "Isabella", "Lelio", "Mezzettino", "Pantalone", "Pedrolino", "Pulcinella", "Scaramouche", "Truffaldino", "Zanni"]
+        },
+        {
             title: "EXPERT-Figures de rhétorique",
             answers: ["Anaphore", "Chiasme", "Ellipse", "Hyperbole", "Litote", "Métonymie", "Oxymore", "Synecdoque", "Zeugme"]
         },
         {
+            title: "EXPERT-Figures de style",
+            answers: ["Allitération", "Allégorie", "Anacoluthe", "Anaphore", "Antiphrase", "Antithèse", "Assonance", "Chiasme", "Ellipse", "Euphémisme", "Hyperbole", "Ironie", "Litote", "Métaphore", "Métonymie", "Oxymore", "Pléonasme", "Synecdoque"]
+        },
+        {
             title: "EXPERT-Figures de style littéraires",
             answers: ["Allitération", "Allégorie", "Anaphore", "Antithèse", "Chiasme", "Ellipse", "Euphémisme", "Hyperbole", "Litote", "Métaphore", "Métonymie", "Oxymore", "Périphrase", "Zeugma"]
+        },
+        {
+            title: "EXPERT-Films de kung-fu",
+            answers: ["Bruce Lee", "Chan", "Drunken Master", "Fist of Fury", "Five Fingers", "Golden Harvest", "Gordon Liu", "Jet Li", "Kurosawa", "Lam", "Master Killer", "Police Story", "Shaw Brothers", "Way of the Dragon", "Wong Kar-wai", "Yuen Biao", "Yuen Woo-ping"]
         },
         {
             title: "EXPERT-Fjords de Norvège",
@@ -2690,6 +2892,10 @@
         {
             title: "EXPERT-Fleurs qu'on sèche",
             answers: ["Achillée", "Blé", "Chardon", "Delphinium", "Eucalyptus", "Gypsophile", "Hydrangea", "Immortelle", "Lavande", "Statice"]
+        },
+        {
+            title: "EXPERT-Fleurs qui changent de couleur selon le pH du sol",
+            answers: ["Hortensia", "Hydrangea macrophylla", "Lilium", "Lobelia", "Pulmonaire officinale", "Pétunia", "Rose de Noël", "Trillium"]
         },
         {
             title: "EXPERT-Fleurs tropicales",
@@ -2888,6 +3094,10 @@
             answers: ["Dioné", "Encelade", "Hypérion", "Iapetus", "Janus", "Mimas", "Pandore", "Phœbé", "Prométhée", "Rhéa", "Titan", "Téthys", "Épiméthée"]
         },
         {
+            title: "EXPERT-Luthiers célèbres",
+            answers: ["Amati", "Bergonzi", "Bresciani", "Chanot", "Gagliano", "Giuliani", "Guadagnini", "Guarneri", "Hill", "Lupot", "Mittenwald", "Panormo", "Ruggieri", "Stradivari", "Testore", "Vuillaume"]
+        },
+        {
             title: "EXPERT-Maladies tropicales",
             answers: ["Bilharziose", "Dengue", "Filariose", "Fièvre jaune", "Leishmaniose", "Malaria", "Onchocercose", "Paludisme", "Trypanosomiase", "Typhus", "Yellow fever"]
         },
@@ -2908,12 +3118,20 @@
             answers: ["Beluga", "Bœuf musqué", "Caribou", "Glouton", "Hermine", "Lagopède", "Lemming", "Lièvre", "Loup", "Morse", "Nanoq", "Narval", "Otarie", "Ours", "Phoque", "Renard", "Ursus"]
         },
         {
+            title: "EXPERT-Marionnettes et spectacles de marionnettes",
+            answers: ["Bunraku", "Fantoccini", "Gaziantep", "Guignol", "Jeu de l'oie", "Karagöz", "Lafleur", "Nô", "Ombres chinoises", "Polichinelle", "Puppet", "Sooty", "Topeng", "Wayang"]
+        },
+        {
             title: "EXPERT-Mathématiciens grecs antiques",
             answers: ["Apollonius", "Archimède", "Diophante", "Euclide", "Hipparque", "Hypatie", "Héron", "Ménélaüs", "Nicomaque", "Pappus", "Ptolémée", "Pythagore", "Thalès", "Théodose", "Ératosthène", "Ératosthène"]
         },
         {
             title: "EXPERT-Minéraux d'uranium",
             answers: ["Autunite", "Becquerelite", "Boltwoodite", "Carnotite", "Coffinite", "Cuprosklodowskite", "Gummite", "Masuyite", "Metatorbernite", "Sklodowskite", "Soddyite", "Torbernite", "Tyuyamunite", "Uraninite", "Uranophane", "Zippéite"]
+        },
+        {
+            title: "EXPERT-Minéraux du groupe des silicates",
+            answers: ["Albite", "Amphibole", "Andalousite", "Augite", "Biotite", "Cordiérite", "Diopside", "Enstatite", "Feldspath", "Grenat", "Hornblende", "Jadéite", "Muscovite", "Olivine", "Pyroxène", "Quartz", "Topaze", "Zircon"]
         },
         {
             title: "EXPERT-Minéraux fluorescents",
@@ -3012,6 +3230,10 @@
             answers: ["Arte Povera", "Constructivisme", "Cubisme", "Dadaïsme", "Expressionnisme", "Fauvisme", "Futurisme", "Néoplasticisme", "Orphisme", "Précisionnisme", "Purisme", "Rayonnisme", "Suprématisme", "Surréalisme", "Synchronisme", "Vorticisme"]
         },
         {
+            title: "EXPERT-Mouvements de danse baroque",
+            answers: ["Bourrée", "Branle", "Canarie", "Chaconne", "Courante", "Entrée", "Forlane", "Gavotte", "Gigue", "Loure", "Menuet", "Musette", "Passacaille", "Passepied", "Rigaudon", "Sarabande", "Tambourin"]
+        },
+        {
             title: "EXPERT-Mouvements hérétiques médiévaux",
             answers: ["Albigeois", "Arnaldistes", "Cathares", "Hussites", "Lollards", "Patarins", "Vaudois", "Wyclifites"]
         },
@@ -3022,6 +3244,10 @@
         {
             title: "EXPERT-Mythologie nordique",
             answers: ["Balder", "Freya", "Heimdall", "Loki", "Odin", "Thor", "Tyr", "Valkyries"]
+        },
+        {
+            title: "EXPERT-Métaux de transition",
+            answers: ["Cadmium", "Chrome", "Cobalt", "Cuivre", "Fer", "Irridium", "Manganèse", "Mercure", "Nickel", "Or", "Osmium", "Platine", "Rhodium", "Titane", "Tungstène", "Zinc"]
         },
         {
             title: "EXPERT-Méthodes de datation scientifique",
@@ -3058,6 +3284,10 @@
         {
             title: "EXPERT-Oblasts de Russie",
             answers: ["Amour", "Arkhangelsk", "Astrakhan", "Belgorod", "Briansk", "Iaroslavl", "Iekaterinbourg", "Irkoutsk", "Ivanovo", "Kaliningrad", "Kalouga", "Kemerovo", "Kherson", "Kirov", "Kostroma", "Kourgan", "Koursk", "Lipetsk", "Léningrad", "Magadan", "Moscou (Oblast)", "Mourmansk", "Nijni Novgorod", "Novgorod", "Novossibirsk", "Omsk", "Orel", "Orenbourg", "Oudmourtie", "Oulianovsk", "Penza", "Pskov", "Riazan", "Rostov", "Sakhaline", "Samara", "Saratov", "Smolensk", "Tambov", "Tcheliabinsk", "Tioumen", "Tomsk", "Toula", "Tver", "Vladimir", "Volgograd", "Vologda", "Voronej", "Zaporijjia"]
+        },
+        {
+            title: "EXPERT-Oiseaux aux parades nuptiales spectaculaires",
+            answers: ["Argus géant", "Bowerbird", "Combattant varié", "Faisan doré", "Fou à pieds bleus", "Grue du Japon", "Grèbe huppé", "Lyrure", "Manakin à cuisses jaunes", "Oiseau de paradis", "Outarde canepetière", "Paon bleu", "Parrotie de Sclater", "Satyre de Temminck", "Tétras lyre"]
         },
         {
             title: "EXPERT-Oiseaux de paradis",
@@ -3208,6 +3438,10 @@
             answers: ["Belize", "Cambodge", "Mexique", "Mozambique", "Suriname", "Zaïre", "Zimbabwe"]
         },
         {
+            title: "EXPERT-Pays du monde contenant un B et un D",
+            answers: ["Antigua-et-Barbuda", "Arabie saoudite", "Azerbaïdjan", "Bangladesh", "Barbade", "Burundi", "Cambodge", "Djibouti", "République dominicaine", "République démocratique du Congo"]
+        },
+        {
             title: "EXPERT-Peintres de l'École de Barbizon",
             answers: ["Breton", "Corot", "Daubigny", "Diaz", "Dupré", "Français", "Harpignies", "Huet", "Isabey", "Jacque", "Michel", "Millet", "Monticelli", "Rousseau", "Troyon"]
         },
@@ -3308,6 +3542,10 @@
             answers: ["Amplitude", "Battement", "Cavité résonante", "Cloche", "Corde vibrante", "Cristal de quartz", "Diapason", "Effet larsen", "Fréquence propre", "Harmonique", "Onde stationnaire", "Oscillation", "Pont de Tacoma", "Résonance magnétique", "Résonateur", "Tambour", "Vibration", "Écho"]
         },
         {
+            title: "EXPERT-Phénomènes quantiques",
+            answers: ["Décohérence", "Dégénérescence", "Effet tunnel", "Enchevêtrement", "Intrication", "Lasers", "Niveaux d'énergie", "Onde de matière", "Principe d'exclusion", "Principe incertitude", "Quantification", "Spin", "Superposition", "Transistor", "Téléportation", "Zénon"]
+        },
+        {
             title: "EXPERT-Pierres philosophales et alchimiques",
             answers: ["Antimoine", "Cinabre", "Mercure", "Orpiment", "Réalgar", "Soufre", "Vitriol"]
         },
@@ -3324,6 +3562,10 @@
             answers: ["Aldrovanda", "Byblis", "Céphalotus", "Darlingtonia", "Dionée", "Drosophyllum", "Droséra", "Grassette", "Héliamphora", "Népenthès", "Philcoxia", "Roridula", "Sarracénie", "Triphyophyllum", "Utriculaire"]
         },
         {
+            title: "EXPERT-Plantes qui se referment au toucher",
+            answers: ["Biophytum sensitivum", "Codariocalyx motorius", "Dionée attrape-mouche", "Drosera", "Mimosa pudica", "Mimosa sensitiva", "Neptunia oleracea", "Oxalis regnellii", "Schrankia uncinata"]
+        },
+        {
             title: "EXPERT-Plantes toxiques",
             answers: ["Aconit", "Belladone", "Ciguë", "Colchique", "Datura", "Digitale", "Gui", "Jusquiame", "Laurier-rose", "Ricin", "Sauge des bois", "Tabac", "oenanthe safranée"]
         },
@@ -3334,6 +3576,14 @@
         {
             title: "EXPERT-Planètes naines et corps célestes",
             answers: ["Charon", "Cérès", "Dysnomia", "Hauméa", "Hygie", "Ixion", "Makémaké", "Orcus", "Pallas", "Pluton", "Quaoar", "Sedna", "Varuna", "Vesta", "Éris"]
+        },
+        {
+            title: "EXPERT-Poissons bioluminescents",
+            answers: ["Baudroie abyssale", "Chimère", "Hache d'argent", "Lanterne à nez clair", "Lentille d'eau de mer", "Malacosteus", "Poisson-dragon", "Poisson-lanterne", "Poisson-phare", "Poisson-vipère", "Squalelet féroce", "Sébaste"]
+        },
+        {
+            title: "EXPERT-Poètes français (S-Z)",
+            answers: ["Saint-Amant", "Saint-John Perse", "Sainte-Beuve", "Segalen", "Senghor", "Supervielle", "Tardieu", "Théophile", "Toulet", "Tristan", "Valéry", "Verhaeren", "Verlaine", "Vian", "Viau", "Vigny", "Vildrac", "Villon", "Voiture", "Zola", "Zévaco"]
         },
         {
             title: "EXPERT-Principaux nerfs crâniens",
@@ -3366,6 +3616,10 @@
         {
             title: "EXPERT-Romans épistolaires",
             answers: ["Dracula", "Frankenstein", "L'Étrangère", "La Couleur pourpre", "La Démence du colonel", "Le Club des amateurs de L'épluchure de patates littéraires", "Le Journal d'Hélène Berr", "Le Prince", "Les Belles Endormies", "Les Liaisons dangereuses", "Les Souffrances du jeune Werther", "Lettres persanes"]
+        },
+        {
+            title: "EXPERT-Réalisateurs de films d'animation",
+            answers: ["Bird", "Burton", "Clements", "Docter", "Gilliam", "Hayao Miyazaki", "Hosoda", "Isao Takahata", "Lasseter", "Musker", "Ocelot", "Selick", "Svankmajer", "Zemeckis"]
         },
         {
             title: "EXPERT-Républiques de Russie",
@@ -3680,8 +3934,24 @@
             answers: ["Ain", "Ardéche", "Arve", "Cance", "Doux", "Drôme", "Durance", "Eygues", "Fier", "Galaure", "Gard", "Isère", "Ouvèze", "Saône", "Têt"]
         },
         {
+            title: "Géographie et voyage-Agglomérations françaises de plus de 500 000 habitants",
+            answers: ["Bordeaux", "Grenoble", "Lille", "Lyon", "Marseille", "Montpellier", "Nantes", "Nice", "Paris", "Rennes", "Strasbourg", "Toulon", "Toulouse"]
+        },
+        {
             title: "Géographie et voyage-Anciennes capitales abandonnées",
             answers: ["Akhetaton", "Angkor", "Babylone", "Carthage", "Ctésiphon", "Leptis Magna", "Mohenjo-daro", "Nara", "Nimroud", "Ninive", "Palenque", "Pétra", "Tenochitlan", "Thèbes", "Troie", "Vijayanagara"]
+        },
+        {
+            title: "Géographie et voyage-Anciennes colonies belges et néerlandaises",
+            answers: ["Belgique-Burundi", "Belgique-Congo", "Belgique-Rwanda", "Hollande-Antilles", "Hollande-Ceylan", "Hollande-Formose", "Hollande-Guyane", "Hollande-Indonésie", "Hollande-Maldives", "Hollande-Suriname"]
+        },
+        {
+            title: "Géographie et voyage-Anciennes colonies françaises en Afrique",
+            answers: ["Burkina-Faso", "Bénin", "Cameroun", "Centrafrique", "Comores", "Congo", "Côte-d'Ivoire", "Djibouti", "Gabon", "Guinée", "Madagascar", "Mali", "Mauritanie", "Niger", "Sénégal", "Tchad", "Togo"]
+        },
+        {
+            title: "Géographie et voyage-Anciennes républiques soviétiques d'Asie centrale",
+            answers: ["Azerbaïdjan", "Kazakhstan", "Kirghizistan", "Ouzbékistan", "Tadjikistan", "Turkménistan"]
         },
         {
             title: "Géographie et voyage-Archipels d'Asie",
@@ -3728,8 +3998,16 @@
             answers: ["Addu", "Aitutaki", "Aldabra", "Aranuka", "Bikini", "Diego Garcia", "Fakarava", "Funafuti", "Huvadhu", "Kwajalein", "Majuro", "Mururoa", "Rangiroa", "Tarawa", "Tetiaroa"]
         },
         {
+            title: "Géographie et voyage-Autoroutes françaises",
+            answers: ["A1", "A10", "A11", "A13", "A20", "A26", "A31", "A36", "A40", "A43", "A6", "A61", "A62", "A7", "A8", "A9"]
+        },
+        {
             title: "Géographie et voyage-Avenues de Paris",
             answers: ["Champs-Élysées", "Foch", "George V", "Grande Armée", "Iéna", "Kléber", "La Bourdonnais", "Marceau", "Montaigne", "Motte-Picquet", "Mozart", "Opéra", "Rapp", "Suffren", "Ternes", "Victor Hugo", "Wagram"]
+        },
+        {
+            title: "Géographie et voyage-Aéroports internationaux français",
+            answers: ["Beauvais", "Bordeaux", "Brest", "Grenoble", "Lille", "Lyon", "Marseille", "Montpellier", "Nantes", "Nice", "Paris-CDG", "Paris-Orly", "Rennes", "Strasbourg", "Toulouse"]
         },
         {
             title: "Géographie et voyage-Baies célèbres du monde",
@@ -3766,6 +4044,14 @@
         {
             title: "Géographie et voyage-Canaux de France",
             answers: ["Bourgogne", "Briare", "Centre", "Garonne", "Latéral à la Loire", "Loing", "Marne au Rhin", "Midi", "Nantes à Brest", "Nivernais", "Nord", "Ourcq", "Rhône au Rhin", "Saint-Denis", "Saint-Martin", "Somme", "Vosges"]
+        },
+        {
+            title: "Géographie et voyage-Canaux de navigation intérieure en France",
+            answers: ["Alsace", "Bourgogne", "Briare", "Canal-du-Midi", "Garonne", "Loing", "Marne-Saône", "Marne-au-Rhin", "Nivernais", "Rhône-au-Rhin", "Roanne-Digoin", "Saint-Quentin", "Sèvre"]
+        },
+        {
+            title: "Géographie et voyage-Cantons suisses",
+            answers: ["Appenzell", "Argovie", "Berne", "Bâle", "Fribourg", "Genève", "Glaris", "Grisons", "Jura", "Lucerne", "Neuchâtel", "Obwald", "Schaffhouse", "Soleure", "Tessin", "Thurgovie", "Uri", "Valais", "Vaud", "Zoug", "Zurich"]
         },
         {
             title: "Géographie et voyage-Capitales Africaines (A à L)",
@@ -3904,6 +4190,14 @@
             answers: ["Angel", "Ban Gioc", "Dettifoss", "Gocta", "Gullfoss", "Havasu", "Iguazú", "Kaieteur", "Niagara", "Plitvice", "Rhinefall", "Seljalands", "Skógafoss", "Snoqualmie", "Tugela", "Victoria", "Yosemite"]
         },
         {
+            title: "Géographie et voyage-Cathédrales célèbres de France",
+            answers: ["Amiens", "Autun", "Bourges", "Chartres", "Laon", "Metz", "Noyon", "Reims", "Rouen", "Sens", "Soissons", "Strasbourg"]
+        },
+        {
+            title: "Géographie et voyage-Champs de bataille de la Première Guerre mondiale",
+            answers: ["Arras", "Cambrai", "Chemin-des-Dames", "Jutland", "Marne", "Meuse-Argonne", "Passchendaele", "Pozières", "Somme", "Tannenberg", "Verdun", "Vimy", "Ypres"]
+        },
+        {
             title: "Géographie et voyage-Chaînes de montagnes célèbres",
             answers: ["Alpes", "Altaï", "Andes", "Appalaches", "Atlas", "Carpates", "Caucase", "Himalaya", "Karakoram", "Montagnes", "Oural", "Pyrénées", "Rocheuses"]
         },
@@ -3940,6 +4234,10 @@
             answers: ["Belleville", "Butte Bergeyre", "Butte de Montceau", "Butte du Chapeau Rouge", "Butte-aux-Cailles", "Buttes-Chaumont", "Colline de Chaillot", "Colline de Passy", "Montagne Sainte-Geneviève", "Montmartre", "Montparnasse", "Ménilmontant"]
         },
         {
+            title: "Géographie et voyage-Cols alpins célèbres",
+            answers: ["Agnel", "Bernina", "Brenner", "Fréjus", "Galibier", "Gotthard", "Grandes Rousses", "Grimsel", "Izoard", "Lautaret", "Maloja", "Mont-Cenis", "Montgenèvre", "Restefond", "Simplon", "Stelvio", "Tende"]
+        },
+        {
             title: "Géographie et voyage-Cols célèbres des Alpes",
             answers: ["Agnel", "Allos", "Bonette", "Galibier", "Iseran", "Izoard", "Lombarde", "Madeleine", "Mont-Cenis", "Nivolet", "Petit Saint-Bernard", "Sarenne", "Seigne", "Tende", "Vars"]
         },
@@ -3964,6 +4262,10 @@
             answers: ["Anzob", "Babusar", "Jalori", "Karakoram", "Khunjerab", "Khyber", "Kunzum", "Larke", "Lipulekh", "Mana", "Nathu", "Rohtang", "Salang", "Shingo", "Thorong", "Tizi", "Zoji"]
         },
         {
+            title: "Géographie et voyage-Cols et tunnels routiers des Alpes",
+            answers: ["Arlberg", "Bernard", "Brenner", "Fréjus", "Furka", "Gotthard", "Grimsel", "Julier", "Maloja", "Mont-Blanc", "Nufenen", "Oberalp", "Reschen", "Simplon", "Splügen"]
+        },
+        {
             title: "Géographie et voyage-Cols mythiques",
             answers: ["Alpe", "Angliru", "Aubisque", "Croix", "Finestre", "Galibier", "Gavia", "Iseran", "Izoard", "Madeleine", "Mortirolo", "Nufenen", "Roselend", "Stelvio", "Susten", "Tourmalet", "Ventoux"]
         },
@@ -3972,12 +4274,28 @@
             answers: ["Andalousie", "Aragon", "Asturies", "Cantabrie", "Castille-La Manche", "Castille-et-León", "Catalogne", "Communauté Valencienne", "Communauté de Madrid", "Estrémadure", "Galice", "La Rioja", "Murcie", "Navarre", "Pays Basque", "Îles Baléares", "Îles Canaries"]
         },
         {
+            title: "Géographie et voyage-Communautés autonomes d'Espagne",
+            answers: ["Andalousie", "Aragon", "Asturies", "Baléares", "Cantabrie", "Castille-León", "Catalogne", "Estrémadure", "Galice", "Madrid", "Murcie", "Navarre", "Pays-Basque", "Rioja", "Valence"]
+        },
+        {
+            title: "Géographie et voyage-Communes françaises de plus de 100 000 habitants",
+            answers: ["Bordeaux", "Brest", "Grenoble", "Lille", "Lyon", "Marseille", "Montpellier", "Nantes", "Nice", "Paris", "Rennes", "Saint-Etienne", "Strasbourg", "Toulon", "Toulouse"]
+        },
+        {
             title: "Géographie et voyage-Compagnies aériennes",
             answers: ["Aeroflot", "Air Canada", "Air France", "Alaska Airlines", "Alitalia", "All Nippon Airways", "American Airlines", "British Airways", "Cathay Pacific", "Delta Air Lines", "EasyJet", "Emirates", "Etihad Airways", "Iberia", "Japan Airlines", "JetBlue Airways", "KLM", "Korean Air", "Lufthansa", "Malaysia Airlines", "Qantas", "Qatar Airways", "Ryanair", "Singapore Airlines", "Southwest Airlines", "Swiss International Air Lines", "TWA", "Thai Airways", "Turkish Airlines", "United Airlines", "Virgin Atlantic"]
         },
         {
+            title: "Géographie et voyage-Confédérations et unions d'États",
+            answers: ["ASEAN", "BRICS", "CEI", "Confédération-helvétique", "ECOWAS", "Mercosur", "OTAN", "Pacte-andin", "Union-africaine", "Union-européenne", "Union-maghrébine"]
+        },
+        {
             title: "Géographie et voyage-Côtes européennes",
             answers: ["Adriatique", "Amalfitaine", "Baltique", "Basque", "Bretonne", "Cantabrique", "Corse", "Dalmatienne", "Frisonne", "Galicienne", "Ionienne", "Ligures", "Normande", "Sarde", "Sicilienne", "Tyrrhénienne", "Écossaise"]
+        },
+        {
+            title: "Géographie et voyage-Côtes maritimes françaises",
+            answers: ["Alabâtre", "Amour", "Argent", "Basque", "Corail", "Corniche-vendéenne", "Côte-Sauvage", "Côte-d-Azur", "Côte-d-Opale", "Emeraude", "Granite-rose", "Jade", "Nacre", "Varech", "Vermeille"]
         },
         {
             title: "Géographie et voyage-Deltas du monde",
@@ -4076,6 +4394,10 @@
             answers: ["Ardennes", "Bas-Rhin", "Calvados", "Charente", "Dordogne", "Morbihan", "Vaucluse", "Yvelines"]
         },
         {
+            title: "Géographie et voyage-Départements français ne bordant ni la mer ni un autre pays",
+            answers: ["Allier", "Ardèche", "Aube", "Aveyron", "Cantal", "Cher", "Corrèze", "Creuse", "Deux-Sèvres", "Dordogne", "Eure", "Gers", "Haute-Loire", "Haute-Marne", "Indre", "Loir-et-Cher", "Lot", "Lozère", "Marne", "Meuse", "Nièvre", "Puy-de-Dôme", "Saône-et-Loire", "Tarn", "Vaucluse", "Yonne"]
+        },
+        {
             title: "Géographie et voyage-Départements traversés par la Nationale 7",
             answers: ["Allier", "Alpes-Maritimes", "Bouches-du-Rhône", "Drôme", "Essonne", "Isère", "Loire", "Loiret", "Nièvre", "Paris", "Rhône", "Seine-et-Marne", "Val-de-Marne", "Var", "Vaucluse"]
         },
@@ -4120,6 +4442,10 @@
             answers: ["Alaska", "Californie", "Caroline du Nord", "Floride", "Géorgie", "Hawaï", "Louisiane", "Maine", "Massachusetts", "New York", "Oregon", "Texas", "Virginie"]
         },
         {
+            title: "Géographie et voyage-Fleuves côtiers de France",
+            answers: ["Adour", "Argens", "Aude", "Gapeau", "Hérault", "Lay", "Leyre", "Orb", "Orne", "Seudre", "Touques", "Têt", "Vidourle", "Vilaine"]
+        },
+        {
             title: "Géographie et voyage-Fleuves d'Afrique",
             answers: ["Congo", "Gambie", "Limpopo", "Niger", "Nil", "Okavango", "Oorange", "Oualaba", "Oubangui", "Sénégal", "Volta", "Zambèze"]
         },
@@ -4156,8 +4482,16 @@
             answers: ["Amour", "Don", "Iana", "Ienisseï", "Indiguirka", "Irtysh", "Kama", "Kolyma", "Léna", "Ob", "Oka", "Oural", "Petchora", "Selenga", "Volga"]
         },
         {
+            title: "Géographie et voyage-Fleuves et rivières de France",
+            answers: ["Allier", "Charente", "Creuse", "Dordogne", "Garonne", "Gironde", "Isère", "Loire", "Lot", "Marne", "Moselle", "Rhône", "Sarthe", "Saône", "Seine", "Vienne", "Vilaine"]
+        },
+        {
             title: "Géographie et voyage-Forêts de France",
             answers: ["Andaine", "Aïtone", "Bouconne", "Brocéliande", "Chambord", "Compiègne", "Fontainebleau", "Grimbosq", "Landes", "Orléans", "Pays de Chimay", "Rambouillet", "Tronçais"]
+        },
+        {
+            title: "Géographie et voyage-Forêts domaniales de France",
+            answers: ["Andaines", "Bercé", "Chantilly", "Compiègne", "Fontainebleau", "Haguenau", "Lyons", "Mormal", "Orléans", "Rambouillet", "Saint-Gobain", "Tronçais", "Vizzavona"]
         },
         {
             title: "Géographie et voyage-Golfes de France",
@@ -4170,6 +4504,14 @@
         {
             title: "Géographie et voyage-Gorges célèbres",
             answers: ["Aare", "Antelope", "Ardèche", "Black Canyon", "Blyde", "Bryce", "Cañón del Sumidero", "Charyn", "Cheddar", "Chicamocha", "Colca", "Copper", "Doubs", "Fish", "Futaleufú", "Kakouetta", "Kali", "Kings", "Krka", "Lousios", "Marble Canyon", "Matka", "Neretva", "Nesque", "Orb", "Petra", "Ronda", "Samaria", "Santa Cruz", "Soca", "Spelunca", "Sumidero", "Tara", "Tarn", "Taroko", "Three Rondavels", "Tiger", "Todgha", "Vikos", "Waimea", "Yangtsé", "Yarlung Tsangpo", "Zangskar"]
+        },
+        {
+            title: "Géographie et voyage-Grandes baies françaises",
+            answers: ["Audierne", "Bourgneuf", "Brest", "Douarnenez", "Morlaix", "Quiberon", "Saint-Brieuc", "Saint-Malo", "Somme", "Veys"]
+        },
+        {
+            title: "Géographie et voyage-Grandes métropoles d'Asie du Sud-Est",
+            answers: ["Bangkok", "Hanoi", "Ho-Chi-Minh", "Jakarta", "Kuala-Lumpur", "Manille", "Phnom-Penh", "Rangoun", "Singapour", "Surabaya", "Vientiane", "Yangon"]
         },
         {
             title: "Géographie et voyage-Grandes villes d'Afrique",
@@ -4312,12 +4654,20 @@
             answers: ["Choucroute", "Cigogne", "Colmar", "Gewurztraminer", "Haut-Koenigsbourg", "Haut-Rhin", "Kouglof", "Maison à colombages", "Marchés de Noël", "Munster", "Musée Unterlinden", "Obernai", "Petite France", "Rhin", "Riesling", "Route des Vins", "Strasbourg", "Tarte flambée", "Vignoble alsacien", "Winstub"]
         },
         {
+            title: "Géographie et voyage-L'Amazonie",
+            answers: ["Anaconda", "Belem", "Biodiversité", "Boa", "Caimans", "Canopée", "Déforestation", "Guyana", "Iguane", "Jaguar", "Macapa", "Manaus", "Piranha", "Pérou", "Ribeirinha", "Tapir", "Toucan"]
+        },
+        {
             title: "Géographie et voyage-L'Argentine",
             answers: ["Aconcagua", "Asado", "Buenos Aires", "Evita", "Gaucho", "La Boca", "Malbec", "Mar del Plata", "Maradona", "Mate", "Obélisque de Buenos Aires", "Pampa", "Pape François", "Patagonie", "Perón", "Peso", "Tango", "Vin"]
         },
         {
             title: "Géographie et voyage-L'Argentine",
             answers: ["Andes", "Asado", "Astor Piazzolla", "Borges", "Buenos Aires", "Córdoba", "Empanada", "Espagnol", "Evita", "Fangio", "Fernet", "Gardel", "Iguazú", "Malbec", "Maradona", "Mendoza", "Messi", "Milei", "Pampa", "Patagonie", "Perón", "Peso", "Quino", "Rosario", "Tango", "Ushuaïa"]
+        },
+        {
+            title: "Géographie et voyage-L'Argentine",
+            answers: ["Boca Juniors", "Buenos Aires", "Córdoba", "Dulce de leche", "Evita", "Gaucho", "Iguazú", "Jujuy", "Maradona", "Mate", "Mendoza", "Pampa", "Patagonie", "Peronisme", "Rosario", "Salta", "Tango", "Terre de Feu"]
         },
         {
             title: "Géographie et voyage-L'Australie",
@@ -4332,12 +4682,20 @@
             answers: ["Alhambra", "Barcelone", "Castille", "Corrida", "Costa del Sol", "Flamenco", "Gaudi", "Guerre civile", "Madrid", "Paella", "Péninsule ibérique", "Sangria", "Sierra Nevada", "Séville", "Tapas", "Tortilla"]
         },
         {
+            title: "Géographie et voyage-L'Inde du Sud",
+            answers: ["Bengaluru", "Chennai", "Cochin", "Déccan", "Hampi", "Hyderabad", "Karnataka", "Kerala", "Kochi", "Madurai", "Mahabalipuram", "Mangalore", "Mysore", "Ooty", "Pondichéry", "Tamil Nadu", "Thanjavur", "Trivandrum"]
+        },
+        {
             title: "Géographie et voyage-L'Islande",
             answers: ["Akureyri", "Blue Lagoon", "Dynjandi", "Egilsstadir", "Gullfoss", "Hekla", "Hofn", "Husavik", "Isafjordur", "Katla", "Keflavik", "Laugavegur", "Myvatn", "Reykjavik", "Selfoss", "Skogafoss", "Vatnajökull", "Vik"]
         },
         {
             title: "Géographie et voyage-L'Écosse",
             answers: ["Aberdeen", "Braveheart", "Cornemuse", "Glasgow", "Haggis", "Highlands", "Kilt", "Loch Ness", "Sirènes", "Tartan", "Walter Scott", "Whisky", "Écossais", "Édimbourg"]
+        },
+        {
+            title: "Géographie et voyage-L'Éthiopie",
+            answers: ["Addis-Abeba", "Aksoum", "Berbera", "Blue Nile", "Copte", "Djibouti", "Fasilides", "Gondar", "Haile Selassié", "Harar", "Injera", "Kaffa", "Lalibela", "Massaï", "Omo", "Simien", "Tigré"]
         },
         {
             title: "Géographie et voyage-La Belgique",
@@ -4364,6 +4722,10 @@
             answers: ["Acropole", "Athènes", "Crète", "Cyclades", "Délos", "Démocratie", "Feta", "Ionie", "Mycènes", "Mythologie", "Olympie", "Parthénon", "Philosophie", "Rhodes", "Santorin", "Sparte", "Tzatziki", "Zorba", "Égée", "Épidaure"]
         },
         {
+            title: "Géographie et voyage-La Grèce antique",
+            answers: ["Acropole", "Agora", "Aristote", "Athènes", "Delphes", "Homère", "Mykonos", "Olympe", "Olympie", "Parthénon", "Platon", "Santorin", "Socrate", "Sparte", "Thessalonique", "Troie", "Éphèse"]
+        },
+        {
             title: "Géographie et voyage-La Hongrie",
             answers: ["Balaton", "Bartók", "Budapest", "Danube", "Debrecen", "Elo", "Forint", "Goulash", "Kodály", "Liszt", "Lángos", "Magyar", "Magyar", "Orbán", "Palinka", "Paprika", "Parlement", "Puskas", "Puszta", "Pécs", "Rubik", "Sarkozy", "Szeged", "Thermes", "Tokaj"]
         },
@@ -4380,6 +4742,10 @@
             answers: ["All Blacks", "Alpes du Sud", "Ardern", "Auckland", "Christchurch", "Dollar kiwi", "Edmund Hillary", "Ernest Rutherford", "Haka", "Hangi", "Hobbiton", "Jonah Lomu", "Katherine Mansfield", "Kiwi", "Lorde", "Luxon", "Manuka", "Maori", "Milford Sound", "Pavlova", "Queenstown", "Rotorua", "Rugby", "Sauvignon Blanc", "Waitangi", "Wellington"]
         },
         {
+            title: "Géographie et voyage-La Nouvelle-Zélande",
+            answers: ["All Blacks", "Auckland", "Christchurch", "Fiordland", "Geiser", "Hobbiton", "Kiwi", "Maori", "Milford Sound", "Opossum", "Queenstown", "Rotorua", "Ruapehu", "Tasman", "Waitangi", "Wellington"]
+        },
+        {
             title: "Géographie et voyage-La Pologne",
             answers: ["Auschwitz", "Bigos", "Chopin", "Copernic", "Cracovie", "Duda", "Gdansk", "Kielbasa", "Mazurek", "Morawiecki", "Oscypek", "Pierogi", "Polka", "Poznań", "Solidarność", "Tatras", "Varsovie", "Vistule", "Vodka", "Wałęsa", "Wrocław", "Zakopane", "Zloty", "Zurek"]
         },
@@ -4390,6 +4756,10 @@
         {
             title: "Géographie et voyage-La Russie",
             answers: ["Balalaïka", "Baïkal", "Bortsch", "Caucase", "Caviar", "Communisme", "Cosaques", "Datchas", "Kremlin", "Matriochka", "Moscou", "Novossibirsk", "Oural", "Place Rouge", "Saint-Pétersbourg", "Sibérie", "Taïga", "Tsar", "URSS", "Vodka", "Volga", "Échecs"]
+        },
+        {
+            title: "Géographie et voyage-La Russie",
+            answers: ["Baïkal", "Bolchoï", "Cosmonaute", "Ermitage", "Kamtchatka", "Kремль", "Moscou", "Oural", "Permafrost", "Pouchkine", "Saint-Pétersbourg", "Sibérie", "Tolstoï", "Transsibérien", "Tsar", "Volga", "Volga"]
         },
         {
             title: "Géographie et voyage-La Tchécoslovaquie",
@@ -4460,6 +4830,10 @@
             answers: ["Aiguebelette", "Annecy", "Bourget", "Chalain", "Guéry", "Hourtin-Carcans", "Lac à la Dame", "Léman", "Neuchâtel", "Paladru", "Pareloup", "Saint-Point", "Sainte-Croix", "Serre-Ponçon", "Vouglans"]
         },
         {
+            title: "Géographie et voyage-Lacs volcaniques célèbres",
+            answers: ["Atitlán", "Bolsena", "Bracciano", "Crater-Lake", "Kivu", "Malawi", "Myvatn", "Nios", "Nyos", "Pavin", "Rotorua", "Taal", "Taupo", "Trasimène"]
+        },
+        {
             title: "Géographie et voyage-Le Berry",
             answers: ["Aubigny-sur-Nère", "Bourges", "Canal de Berry", "Cher", "Châteaux", "Forêt de la Marche", "George Sand", "Jacques Coeur", "Sancerre", "Sorcières", "Tronçais", "Val de Loire", "Vierzon", "Vignoble"]
         },
@@ -4484,8 +4858,20 @@
             answers: ["Aalborg", "Aarhus", "Andersen", "Billund", "Bornholm", "Copenhague", "Couronne", "Esbjerg", "Féroé", "Groenland", "Helsingør", "Jutland", "Legoland", "Odense", "Roskilde", "Sjælland", "Viking"]
         },
         {
+            title: "Géographie et voyage-Le Golfe Persique",
+            answers: ["Abu Dhabi", "Bahreïn", "Doha", "Dubai", "Dubaï", "Koweït", "Manama", "Mascate", "Oman", "Pétrole", "Qatar", "Riyad", "Saoudite", "Sharjah", "Zakat"]
+        },
+        {
             title: "Géographie et voyage-Le Japon",
             answers: ["Geisha", "Hokkaidō", "Honshū", "Judo", "Kabuki", "Karaté", "Kimono", "Kobé", "Kyūshū", "Manga", "Mont Fuji", "Origami", "Ramen", "Samouraï", "Shikoku", "Shinkansen", "Sumo", "Sushi", "Tokyo", "Zen"]
+        },
+        {
+            title: "Géographie et voyage-Le Maghreb",
+            answers: ["Algérie", "Atlas", "Berbères", "Casablanca", "Coran", "Dinar", "Libye", "Maghreb", "Maroc", "Médina", "Oasis", "Ramadan", "Sahara", "Souk", "Tunisie", "Égypte"]
+        },
+        {
+            title: "Géographie et voyage-Le Maroc",
+            answers: ["Agadir", "Atlas", "Berbères", "Casablanca", "Couscous", "Djemaa el-Fna", "Essaouira", "Fès", "Hammam", "Kif", "Marrakech", "Mellah", "Médina", "Ouarzazate", "Rabat", "Sahara", "Souk", "Tagine", "Tanger"]
         },
         {
             title: "Géographie et voyage-Le Mexique",
@@ -4504,16 +4890,40 @@
             answers: ["Ají de gallina", "Alpaca", "Alpaga", "Amazonie", "Andes", "Arequipa", "Ceviche", "Chinchilla", "Cochon d'Inde", "Condor", "Cordillière des Andes", "Cusco", "Cuy", "Flûte de Pan", "Fujimori", "Inca", "Iquitos", "Lac Titicaca", "Lama", "Lima", "Machu Picchu", "Nazca", "Ollantaytambo", "Paracas", "Pisco", "Quinoa", "Titicaca", "Vargas Llosa", "Vigogne"]
         },
         {
+            title: "Géographie et voyage-Le Pérou",
+            answers: ["Alpaga", "Amazonie", "Arequipa", "Chicha", "Cuy", "Cuzco", "Huayna Picchu", "Inca", "Lima", "Machu Picchu", "Mochica", "Nazca", "Pisco", "Quechua", "Sol", "Titicaca", "Trujillo"]
+        },
+        {
             title: "Géographie et voyage-Le Vietnam",
             answers: ["Annam", "Baie d'Halong", "Canton", "Da Nang", "Delta du Mékong", "Hanoï", "Ho Chi Minh", "Hué", "Indochine", "Loti", "Mékong", "Nha Trang", "Phan Thiet", "Phu Quoc", "Rizière", "Saïgon", "Tonkin"]
+        },
+        {
+            title: "Géographie et voyage-Les Antilles françaises",
+            answers: ["Basse-Terre", "Carême", "Colombie", "Fort-de-France", "Guadeloupe", "Hivernage", "Joséphine", "Karukera", "Lamentin", "Martinique", "Pointe-à-Pitre", "Rhum", "Saint-Barthélemy", "Saint-Martin", "Vauclin", "Zouk"]
+        },
+        {
+            title: "Géographie et voyage-Les Balkans",
+            answers: ["Adriatique", "Belgrade", "Bosnie", "Bucarest", "Danube", "Dubrovnik", "Herzégovine", "Kosovo", "Ljubljana", "Macédoine", "Monténégro", "Ohrid", "Sarajevo", "Skopje", "Sofia", "Tirana", "Zagreb"]
         },
         {
             title: "Géographie et voyage-Les Pays-Bas",
             answers: ["Amsterdam", "Canaux", "Delft", "Gouda", "Hollande", "La Haye", "Moulins à vent", "Polder", "Rembrandt", "Rotterdam", "Stroopwafel", "Tulipes", "Utrecht", "Van Gogh", "Vélo", "Édam"]
         },
         {
+            title: "Géographie et voyage-Les Pays-Bas",
+            answers: ["Alkmaar", "Amsterdam", "Delft", "Gouda", "Haarlem", "La Haye", "Leiden", "Moulin à vent", "Polder", "Rembrandt", "Rotterdam", "Schiphol", "Stroopwafel", "Tulipe", "Utrecht", "Windmolen", "Édam"]
+        },
+        {
+            title: "Géographie et voyage-Les grandes plaines du monde",
+            answers: ["Amazonie", "Campos", "Canterbury", "Deccan", "Eurasie", "Gran Chaco", "Grande Prairie", "Llanos", "Nullarbor", "Pampas", "Pannonie", "Plaine du Nord", "Prairies", "Sahel", "Serengeti", "Sibérie", "Steppe", "Veld"]
+        },
+        {
+            title: "Géographie et voyage-Les îles grecques",
+            answers: ["Chios", "Corfou", "Cos", "Crète", "Cyclades", "Céphalonie", "Hydra", "Kéfalonia", "Lesbos", "Mykonos", "Naxos", "Paros", "Rhodes", "Samos", "Santorin", "Skiathos", "Sporades", "Zakynthos"]
+        },
+        {
             title: "Géographie et voyage-Lieux de pèlerinage célèbres",
-            answers: ["Canterbury", "Compostelle", "Fatima", "Jérusalem", "Knock", "La Mecque", "Lourdes", "Mont Athos", "Mont Sinaï", "Médine", "Nazareth", "Rocamadour", "Rome", "Taj Mahal", "Varanasi", "Vézelay"]
+            answers: ["Amritsar", "Angkor", "Canterbury", "Czestochowa", "Fatima", "Jérusalem", "Knock", "La Mecque", "Lorette", "Lourdes", "Mont Athos", "Mont Sinaï", "Médine", "Nazareth", "Rocamadour", "Rome", "Saint-Jacques-de-Compostelle", "Sainte-Anne-de-Beaupré", "Varanasi", "Vézelay"]
         },
         {
             title: "Géographie et voyage-Lille",
@@ -4528,6 +4938,14 @@
             answers: ["Bouillabaisse", "Canebière", "Château d'If", "Corniche", "Fernandel", "Marcel Pagnol", "Mistral", "Méditerranée", "Notre-Dame de la Garde", "Olympique de Marseille", "Panier", "Panisse", "Pastis", "Provence", "Pétanque", "Savon de Marseille", "Vieux-Port"]
         },
         {
+            title: "Géographie et voyage-Massifs forestiers d'Île-de-France",
+            answers: ["Armainvilliers", "Carnelle", "Ferrières", "Fontainebleau", "Montmorency", "Rambouillet", "Saint-Germain", "Sénart", "Verrières", "Villefermoy"]
+        },
+        {
+            title: "Géographie et voyage-Massifs montagneux de France",
+            answers: ["Ardennes", "Belledonne", "Chartreuse", "Jura", "Massif-Central", "Maures", "Morvan", "Préalpes", "Pyrénées", "Vercors", "Vosges", "Écrins"]
+        },
+        {
             title: "Géographie et voyage-Mers bordant la Russie",
             answers: ["Baltique", "Barents", "Blanche", "Béring", "Caspienne", "Japon", "Kara", "Noire", "Okhotsk", "Sibérie orientale", "Tchouktches", "aptev"]
         },
@@ -4538,6 +4956,10 @@
         {
             title: "Géographie et voyage-Mers du Monde",
             answers: ["Andaman", "Arabie", "Aral", "Baltique", "Barents", "Caraïbes", "Caspienne", "Chine", "Irlande", "Manche", "Morte", "Méditerranée", "Noire", "Nord", "Okhotsk", "Rouge", "Égée"]
+        },
+        {
+            title: "Géographie et voyage-Mers intérieures et lacs salés",
+            answers: ["Aral", "Asphalte", "Caspienne", "Champlain", "Ladoga", "Léman", "Malawi", "Maracaibo", "Michigan", "Mort", "Onega", "Salton Sea", "Supérieur", "Tanganyika", "Titicaca", "Turkana", "Victoria"]
         },
         {
             title: "Géographie et voyage-Merveilles du monde",
@@ -4562,6 +4984,10 @@
         {
             title: "Géographie et voyage-Montagnes sacrées",
             answers: ["Ararat", "Athos", "Croagh Patrick", "Fujisan", "Kailash", "Kilimandjaro", "Machapuchare", "Meru", "Olympus", "Popocatépetl", "Shasta", "Sinai", "Tabor", "Taranaki", "Uluru"]
+        },
+        {
+            title: "Géographie et voyage-Monuments de Paris",
+            answers: ["Arc de Triomphe", "Bastille", "Beaubourg", "Champs-Élysées", "Conciergerie", "Eiffel", "Grand Palais", "Invalides", "Louvre", "Marais", "Montmartre", "Moulin Rouge", "Notre-Dame", "Opéra", "Panthéon", "Sacré-Coeur", "Sainte-Chapelle", "Versailles"]
         },
         {
             title: "Géographie et voyage-Monuments de Rome",
@@ -4624,12 +5050,24 @@
             answers: ["Calanques", "Cévennes", "Guyane", "Mercantour", "Port-Cros", "Pyrénées", "Réunion", "Vanoise", "Écrins"]
         },
         {
+            title: "Géographie et voyage-Parcs naturels nationaux d'Europe",
+            answers: ["Abisko", "Bavière", "Cairngorms", "Cévennes", "Doñana", "Gran-Paradiso", "Hardangervidda", "Hohe-Tauern", "Mercantour", "Neusiedler-See", "Picos-de-Europa", "Pyrénées", "Retezat", "Triglav", "Vanoise"]
+        },
+        {
+            title: "Géographie et voyage-Parcs naturels régionaux de France",
+            answers: ["Armorique", "Aubrac", "Bauges", "Brière", "Camargue", "Gâtinais", "Luberon", "Marais-Poitevin", "Morvan", "Normandie-Maine", "Pilat", "Quercy", "Vercors", "Verdon", "Vosges"]
+        },
+        {
             title: "Géographie et voyage-Pays africains bordant l'Atlantique",
             answers: ["Afrique du Sud", "Angola", "Bénin", "Cameroun", "Cap-Vert", "Côte d’Ivoire", "Gabon", "Gambie", "Ghana", "Guinée", "Guinée équatoriale", "Guinée-Bissau", "Liberia", "Maroc", "Mauritanie", "Namibie", "Nigeria", "République du Congo", "République démocratique du Congo", "Sao Tomé-et-Principe", "Sierra Leone", "Sénégal", "Togo"]
         },
         {
             title: "Géographie et voyage-Pays africains bordant l'Océan Indien",
             answers: ["Afrique du Sud", "Comores", "Djibouti", "Kenya", "Madagascar", "Maurice", "Mozambique", "Seychelles", "Somalie", "Soudan", "Tanzanie", "Égypte", "Érythrée"]
+        },
+        {
+            title: "Géographie et voyage-Pays ayant changé de nom au XXe siècle",
+            answers: ["Bhoutan", "Biélorussie", "Burkina-Faso", "Bénin", "Cambodge", "Iran", "Myanmar", "Namibie", "Sri Lanka", "Tchad", "Thaïlande", "Timor", "Vanuatu", "Zimbabwe"]
         },
         {
             title: "Géographie et voyage-Pays ayant des sommets de 7000 mètres et plus",
@@ -4792,6 +5230,10 @@
             answers: ["Brunei", "Cambodge", "Indonésie", "Laos", "Malaisie", "Myanmar", "Philippines", "Singapour", "Thaïlande", "Timor oriental", "Vietnam"]
         },
         {
+            title: "Géographie et voyage-Pays d'Asie du Sud-Est",
+            answers: ["Birmanie", "Brunei", "Cambodge", "Indonésie", "Laos", "Malaisie", "Myanmar", "Philippines", "Singapour", "Thaïlande", "Timor", "Vietnam"]
+        },
+        {
             title: "Géographie et voyage-Pays d'Europe A-C",
             answers: ["Albanie", "Allemagne", "Andorre", "Autriche", "Belgique", "Biélorussie", "Bosnie-Herzégovine", "Bulgarie", "Chypre", "Croatie"]
         },
@@ -4944,8 +5386,24 @@
             answers: ["Afghanistan", "Azerbaïdjan", "Bhoutan", "Iran", "Kazakhstan", "Kirghizistan", "Liban", "Oman", "Ouzbékistan", "Pakistan", "Soudan", "Tadjikistan", "Turkménistan"]
         },
         {
+            title: "Géographie et voyage-Pays dont le nom se termine par AND ou ANDE",
+            answers: ["Finlande", "Irlande", "Islande", "Nouvelle-Zélande", "Swaziland", "Thaïlande"]
+        },
+        {
+            title: "Géographie et voyage-Pays dont le nom se termine par ANIE",
+            answers: ["Albanie", "Albanie", "Jordanie", "Lituanie", "Mauritanie", "Roumanie", "Tanzanie"]
+        },
+        {
             title: "Géographie et voyage-Pays dont le nom se termine par IE",
             answers: ["Albanie", "Australie", "Bulgarie", "Croatie", "Estonie", "Géorgie", "Hongrie", "Italie", "Lettonie", "Lituanie", "Malaisie", "Mongolie", "Roumanie", "Serbie", "Slovaquie", "Slovénie", "Syrie", "Tanzanie", "Tunisie", "Turquie", "Zambie"]
+        },
+        {
+            title: "Géographie et voyage-Pays dont le nom se termine par L",
+            answers: ["Brésil", "Israël", "Népal", "Portugal", "Sénégal"]
+        },
+        {
+            title: "Géographie et voyage-Pays dont le nom se termine par O",
+            answers: ["Congo", "Kosovo", "Lesotho", "Monaco", "San Marino", "Togo"]
         },
         {
             title: "Géographie et voyage-Pays dont le territoire s'étend sur deux continents différents",
@@ -4966,10 +5424,6 @@
         {
             title: "Géographie et voyage-Pays du monde contenant un B et un C",
             answers: ["Cambodge", "Colombie", "Cuba", "République centrafricaine", "République dominicaine", "République démocratique du Congo", "République tchèque"]
-        },
-        {
-            title: "Géographie et voyage-Pays du monde contenant un B et un D",
-            answers: ["Antigua-et-Barbuda", "Arabie saoudite", "Azerbaïdjan", "Bangladesh", "Barbade", "Burundi", "Cambodge", "Djibouti", "République dominicaine", "République démocratique du Congo"]
         },
         {
             title: "Géographie et voyage-Pays du monde contenant un B et un Z",
@@ -5096,6 +5550,10 @@
             answers: ["Burkina Faso", "Bénin", "Cap-Vert", "Côte d’Ivoire", "Gambie", "Ghana", "Guinée", "Guinée-Bissau", "Libéria", "Mali", "Mauritanie", "Niger", "Nigéria", "Sierra Leone", "Sénégal", "Togo"]
         },
         {
+            title: "Géographie et voyage-Pays francophones",
+            answers: ["Belgique", "Burkina Faso", "Burundi", "Bénin", "Cameroun", "Canada", "Congo", "Côte d'Ivoire", "Djibouti", "France", "Gabon", "Guinée", "Luxembourg", "Madagascar", "Mali", "Maroc", "Monaco", "Niger", "Suisse", "Sénégal", "Togo", "Tunisie"]
+        },
+        {
             title: "Géographie et voyage-Pays frontaliers de l'Allemagne",
             answers: ["Autriche", "Belgique", "Danemark", "France", "Luxembourg", "Pays-Bas", "Pologne", "République tchèque", "Suisse"]
         },
@@ -5216,6 +5674,10 @@
             answers: ["Abbesses", "Bastille", "Belleville", "Châtelet", "Clichy", "Concorde", "Dauphine", "Denfert-Rochereau", "Hôtel de Ville", "Invalides", "Italie", "Madeleine", "Nation", "Opéra", "Panthéon", "Pigalle", "République", "Saint-Georges", "Saint-Germain-des-Prés", "Saint-Michel", "Saint-Sulpice", "Tertre", "Trocadéro", "Vendôme", "Vosges", "Étoile"]
         },
         {
+            title: "Géographie et voyage-Plaines célèbres du monde",
+            answers: ["Amazonie", "Campine", "Canges", "Castille", "Dakotanord", "Grande-Plaine", "Indus", "Lombardie", "Mésopotamie", "Nullarbor", "Pampas", "Pannonie", "Pô", "Sibérie", "Ukraine"]
+        },
+        {
             title: "Géographie et voyage-Plus hautes chutes d'eau du monde",
             answers: ["Iguazú", "Niagara", "Olo'upena", "Salto Ángel", "Tres Hermanas", "Tugela Falls", "Victoria", "Yumbilla"]
         },
@@ -5237,7 +5699,7 @@
         },
         {
             title: "Géographie et voyage-Ports de la Manche (Angleterre)",
-            answers: ["Brighton Marina", "Dover", "Eastbourne", "Folkestone", "Hastings", "Littlehampton", "Newhaven", "Portsmouth", "Rye Harbour", "Shoreham-by-Sea", "Southampton"]
+            answers: ["Brighton Marina", "Douvres", "Eastbourne", "Folkestone", "Hastings", "Littlehampton", "Newhaven", "Portsmouth", "Rye Harbour", "Shoreham-by-Sea", "Southampton"]
         },
         {
             title: "Géographie et voyage-Ports de la Manche (en France)",
@@ -5258,6 +5720,14 @@
         {
             title: "Géographie et voyage-Principales mers bordières de l'Arctique",
             answers: ["Barents", "Beaufort", "Bering", "Blanche", "Groenland", "Kara", "Laptev", "Lincoln", "Norvège", "Sibérie orientale", "Tchouktches", "Wandel"]
+        },
+        {
+            title: "Géographie et voyage-Principales îles françaises de Méditerranée",
+            answers: ["Bagaud", "Bendor", "Corse", "Embiez", "Frioul", "Giens", "Hyères", "Levant", "Lérins", "Porquerolles", "Port-Cros", "Riou", "Saint-Honorat", "Sainte-Marguerite"]
+        },
+        {
+            title: "Géographie et voyage-Principaux cols pyrénéens",
+            answers: ["Aspin", "Aubisque", "Bielsa", "Bonaigua", "Envalira", "Larrau", "Osquich", "Peyresourde", "Pourtalet", "Quillane", "Roncevaux", "Somport", "Tourmalet"]
         },
         {
             title: "Géographie et voyage-Principaux lacs d'Afrique",
@@ -5284,8 +5754,20 @@
             answers: ["Alberta", "Colombie-Britannique", "Manitoba", "Nouveau-Brunswick", "Nouvelle-Écosse", "Nunavut", "Ontario", "Québec", "Saskatchewan", "Terre-Neuve-et-Labrador", "Territoires du Nord-Ouest", "Yukon", "Île-du-Prince-Édouard"]
         },
         {
+            title: "Géographie et voyage-Provinces historiques de France",
+            answers: ["Alsace", "Anjou", "Artois", "Auvergne", "Berry", "Bourgogne", "Bretagne", "Champagne", "Dauphiné", "Flandre", "Gascogne", "Languedoc", "Limousin", "Lorraine", "Maine", "Normandie", "Orléanais", "Picardie", "Poitou", "Provence", "Saintonge", "Touraine"]
+        },
+        {
+            title: "Géographie et voyage-Préfectures de région françaises",
+            answers: ["Ajaccio", "Bordeaux", "Caen", "Clermont-Ferrand", "Dijon", "Lille", "Limoges", "Lyon", "Marseille", "Montpellier", "Nancy", "Nantes", "Paris", "Rennes", "Rouen", "Strasbourg", "Toulouse"]
+        },
+        {
             title: "Géographie et voyage-Péninsules du monde",
             answers: ["Alaska", "Anatolie", "Antarctique", "Arabique", "Balkanique", "Californie", "Corée", "Crimée", "Floride", "Ibérique", "Indochine", "Italienne", "Kamtchatka", "Scandinavie", "Yucatan"]
+        },
+        {
+            title: "Géographie et voyage-Péninsules européennes",
+            answers: ["Apennins", "Balkans", "Bretagne", "Cotentin", "Crimée", "Hel", "Ibérique", "Istrie", "Jutland", "Kola", "Péloponnèse", "Scandinavie"]
         },
         {
             title: "Géographie et voyage-Quartiers de Lyon",
@@ -5304,6 +5786,14 @@
             answers: ["Bastille", "Belleville", "Champs-Élysées", "Châtelet", "Invalides", "Marais", "Montmartre", "Montparnasse", "Nation", "Oberkampf", "Opéra", "Pigalle", "République", "Saint-Germain-des-Prés", "Trocadéro"]
         },
         {
+            title: "Géographie et voyage-Rivières et fleuves de Paris",
+            answers: ["Bièvre", "Goulette", "Marne", "Ourcq", "Ru-de-Rungis", "Rémarde", "Seine", "Yerres"]
+        },
+        {
+            title: "Géographie et voyage-Routes et chemins de pèlerinage",
+            answers: ["Assise", "Canterbury", "Compostelle", "Czestochowa", "Fatima", "Jérusalem", "Knock", "La-Mecque", "Lorette", "Lourdes", "Medjugorje", "Mont-Athos", "Rome", "Vézelay"]
+        },
+        {
             title: "Géographie et voyage-Rues de Paris de plus de deux kilomètres",
             answers: ["Belleville", "Convention", "Courcelles", "Crimée", "Grenelle", "Lafayette", "Marcadet", "Ordener", "Pyrénées", "Rivoli", "Tolbiac", "Tourelle", "Université", "Vaugirard"]
         },
@@ -5316,12 +5806,28 @@
             answers: ["Abruzzes", "Basilicate", "Calabre", "Campanie", "Latium", "Ligurie", "Lombardie", "Molise", "Piémont", "Pouilles", "Sardaigne", "Sicile", "Toscane", "Vallée d'Aoste", "Vénétie", "Émilie-Romagne"]
         },
         {
+            title: "Géographie et voyage-Régions naturelles de France",
+            answers: ["Alsace", "Ardenne", "Beauce", "Bresse", "Champagne", "Landes", "Limagne", "Morvan", "Périgord", "Quercy", "Sologne", "Touraine", "Vendée"]
+        },
+        {
+            title: "Géographie et voyage-Régions naturelles du Massif central",
+            answers: ["Artense", "Aubrac", "Auvergne", "Bourbonnais", "Combrailles", "Cézallier", "Dore", "Forez", "Gévaudan", "Livradois", "Margeride", "Millevaches", "Mézenc", "Planèze", "Velay", "Vivarais"]
+        },
+        {
             title: "Géographie et voyage-Régions viticoles de France",
             answers: ["Alsace", "Bordeaux", "Bourgogne", "Champagne", "Corse", "Jura", "Languedoc-Roussillon", "Loire", "Provence", "Vallée du Rhône"]
         },
         {
+            title: "Géographie et voyage-Régions viticoles du monde",
+            answers: ["Alsace", "Barossa", "Bordeaux", "Bourgogne", "Champagne", "Chianti", "Mendoza", "Napa", "Porto", "Rioja", "Stellenbosch", "Tokaj", "Toscane"]
+        },
+        {
             title: "Géographie et voyage-Régions viticoles italiennes",
             answers: ["Amarone", "Asti Spumante", "Barolo", "Brunello", "Chianti", "Dolcetto", "Frascati", "Gavi", "Lambrusco", "Marsala", "Montepulciano", "Nebbiolo", "Orvieto", "Pinot Grigio", "Prosecco", "Sangiovese", "Soave", "Valpolicella"]
+        },
+        {
+            title: "Géographie et voyage-Sites classés UNESCO en France",
+            answers: ["Alsace", "Arles", "Causses", "Chartres", "Cévennes", "Fontainebleau", "Mont-Saint-Michel", "Pontdu-Gard", "Reims", "Saint-Émilion", "Strasbourg", "Versailles", "Vézelay"]
         },
         {
             title: "Géographie et voyage-Sommets célèbres de Corse",
@@ -5394,6 +5900,10 @@
         {
             title: "Géographie et voyage-Stations de ski françaises P-V",
             answers: ["La Plagne", "La Rosière", "Les Saisies", "Peyragudes", "Piau-Engaly", "Pra Loup", "Saint-Gervais-les-Bains", "Sainte-Foy-Tarentaise", "Samoëns", "Serre Chevalier", "Super-Besse", "Tignes", "Val Thorens", "Val d'Isère", "Valloire", "Valmeinier"]
+        },
+        {
+            title: "Géographie et voyage-Territoires français d'outre-mer",
+            answers: ["Clipperton", "Guadeloupe", "Guyane", "Kerguelen", "Martinique", "Mayotte", "Nouvelle-Calédonie", "Polynésie", "Réunion", "Saint-Barthélemy", "Saint-Martin", "Saint-Pierre-et-Miquelon", "Wallis-et-Futuna"]
         },
         {
             title: "Géographie et voyage-Tunnels célèbres",
@@ -5509,7 +6019,7 @@
         },
         {
             title: "Géographie et voyage-Villes de France \"Le ...\"",
-            answers: ["Cannet", "Cateau‑Cambrésis", "Chesnay", "Coteau", "Creusot", "Havre", "Kremlin‑Bicêtre", "Mans", "Mans", "Mayet‑de‑Montagne", "Perreux‑sur‑Marne", "Plessis‑Robinson", "Plessis‑Trévise", "Puy‑en‑Velay", "Raincy", "Teil", "Touquet"]
+            answers: ["Cannet", "Cateau-Cambrésis", "Chesnay", "Coteau", "Creusot", "Havre", "Kremlin‑Bicêtre", "Mans", "Mayet‑de‑Montagne", "Perreux‑sur‑Marne", "Plessis‑Robinson", "Plessis‑Trévise", "Puy‑en‑Velay", "Raincy", "Teil", "Touquet"]
         },
         {
             title: "Géographie et voyage-Villes de France ayant un port fluvial",
@@ -6053,7 +6563,7 @@
         },
         {
             title: "Géographie et voyage-Villes françaises contenant un H et un I",
-            answers: ["Champigny-sur-Marne", "Charleville-Mézières", "Cherbourg", "Choisy-le-Roi", "Clichy", "Saint-Herblain", "Thionville"]
+            answers: ["Champigny-sur-Marne", "Charleville-Mézières", "Cherbourg", "Chinon", "Choisy-le-Roi", "Clichy", "Saint-Herblain", "Thionville"]
         },
         {
             title: "Géographie et voyage-Villes françaises contenant un H et un N",
@@ -6101,7 +6611,7 @@
         },
         {
             title: "Géographie et voyage-Villes françaises en 4 lettres",
-            answers: ["Albi", "Alès", "Bron", "Caen", "Lyon", "Metz", "Nice", "Rezé", "Sète"]
+            answers: ["Albi", "Alès", "Auch", "Bron", "Caen", "Dole", "Laon", "Lyon", "Metz", "Nice", "Niort", "Rezé", "Roye", "Sens", "Sète", "Thon", "Toul", "Vire"]
         },
         {
             title: "Géographie et voyage-Villes françaises en 5 lettres",
@@ -6206,6 +6716,10 @@
         {
             title: "Géographie et voyage-Volcans d'Italie",
             answers: ["Etna", "Stromboli", "Vésuve"]
+        },
+        {
+            title: "Géographie et voyage-Zones climatiques du monde",
+            answers: ["Aride", "Continental", "Désertique", "Montagnard", "Méditerranéen", "Océanique", "Polaire", "Semi-aride", "Steppique", "Subarctique", "Subtropical", "Tempéré", "Toundra", "Tropical", "Équatorial"]
         },
         {
             title: "Géographie et voyage-États de l'Ouest des États-Unis",
@@ -6736,6 +7250,10 @@
             answers: ["Bordereau", "Cavagnac", "Dreyfus", "Esterhazy", "Guyane", "Henry", "J'Accuse", "Mercier", "Picquart", "Reinach", "Scheurer-Kestner", "Service statistique", "Waldeck-Rousseau", "Zola"]
         },
         {
+            title: "Histoire et politique-L'Empire ottoman",
+            answers: ["Bosphore", "Constantinople", "Devshirme", "Harem", "Istanbul", "Janissaires", "Mehmed", "Millet", "Pacha", "Selim", "Suleiman", "Tanzimat", "Topkapi", "Ulema", "Vizir"]
+        },
+        {
             title: "Histoire et politique-L'Empire romain",
             answers: ["Auguste", "Caligula", "Colisée", "César", "Gladiateurs", "Légions", "Marc-Aurèle", "Néron", "Pompéi", "Sénat", "Tibère", "Trajan"]
         },
@@ -6745,7 +7263,7 @@
         },
         {
             title: "Histoire et politique-La Chine de Mao",
-            answers: ["Garde rouge", "Grand Bond", "Grand Timonier", "Kuomintang", "Livre rouge", "Longue Marche", "Mao Zedong", "Pékin", "République populaire", "Révolution culturelle", "Taiwan", "Tchang Kaï-chek", "Tiananmen", "Zhou Enlai"]
+            answers: ["Collectivisation", "Communes populaires", "Confucius", "Deng Xiaoping", "Famine", "Garde rouge", "Grand Bond", "Grand Timonier", "Kuomintang", "Lin Biao", "Livre rouge", "Longue Marche", "Mao Zedong", "Pékin", "Quatre Modernisations", "République populaire", "Révolution culturelle", "Taiwan", "Tchang Kaï-chek", "Tiananmen", "Zhou Enlai"]
         },
         {
             title: "Histoire et politique-La Commune de Paris 1871",
@@ -6784,6 +7302,10 @@
             answers: ["14 juillet", "1789", "Abolition des privilèges", "Assemblée nationale", "Bastlle", "Calendrier républicain", "Danton", "Déclaration des droits de l'homme et du citoyen", "Guillotine", "La Marseillaise", "Louis XVI", "Marat", "Marianne", "Prise de la Bastille", "Robespierre", "République", "Sans-culottes", "Terreur", "Tuileries", "États généraux"]
         },
         {
+            title: "Histoire et politique-La Révolution française",
+            answers: ["Assemblée", "Bastille", "Bonaparte", "Brumaire", "Calendrier", "Charlotte Corday", "Convention", "Danton", "Directoire", "Girondins", "Guillotine", "Jacobins", "Marat", "Montagnards", "Robespierre", "Thermidor", "Vendée"]
+        },
+        {
             title: "Histoire et politique-La civilisation romaine",
             answers: ["Aqueduc", "Auguste", "Cicéron", "Colisée", "Empire", "Forum romain", "Gladiateurs", "Jules César", "Latin", "Légionnaires", "Panthéon", "Pompéi", "Rome", "Romulus et Rémus", "Sénat"]
         },
@@ -6802,6 +7324,10 @@
         {
             title: "Histoire et politique-La guerre de 1870",
             answers: ["Alsace-Lorraine", "Bazaine", "Bismarck", "Bourbaki", "Capitulation", "Forbach", "Gambetta", "Garibaldi", "Gravelotte", "Mac-Mahon", "Metz", "Napoléon III", "Paris assiégé", "Prusse", "Sedan", "Strasbourg", "Thiers", "Traité de Francfort", "Wissembourg", "Wörth"]
+        },
+        {
+            title: "Histoire et politique-La guerre de Corée",
+            answers: ["Armistice", "Chosin", "Inch'on", "Incheon", "MacArthur", "ONU", "Panmunjom", "Parallèle 38", "Pusan", "Pyongyang", "Ridgway", "Séoul", "Truman", "Van Fleet", "Walker"]
         },
         {
             title: "Histoire et politique-La guerre froide",
@@ -6838,6 +7364,14 @@
         {
             title: "Histoire et politique-Leaders du mouvement des droits civiques",
             answers: ["Abernathy", "Baker", "Bevel", "Chavis", "Evers", "Hamer", "Jackson", "King", "Lewis", "Malcolm X", "Nash", "Parks", "Rustin", "Shuttlesworth", "Wilkins", "Young"]
+        },
+        {
+            title: "Histoire et politique-Les chevaliers du Moyen-Âge",
+            answers: ["Armure", "Blason", "Chevalerie", "Croisade", "Destrier", "Eperons", "Excalibur", "Feudalité", "Graal", "Héraldique", "Joute", "Lance", "Maille", "Percheron", "Roland", "Surcot", "Templier", "Tournoi"]
+        },
+        {
+            title: "Histoire et politique-Les conquistadors",
+            answers: ["Alvarado", "Balboa", "Cabral", "Coronado", "Cortés", "De Soto", "Grijalva", "Las Casas", "Magellan", "Narváez", "Ojeda", "Orellana", "Pizarro", "Ponce de León", "Quesada", "Valdivia"]
         },
         {
             title: "Histoire et politique-Les guerres de décolonisation",
@@ -6980,6 +7514,10 @@
             answers: ["Akhenaton", "Chéops", "Cléopâtre", "Hatchepsout", "Khéphren", "Mykérinos", "Néfertiti", "Ramsès", "Thoutmôsis", "Toutânkhamon"]
         },
         {
+            title: "Histoire et politique-Pharaons célèbres",
+            answers: ["Akhenaton", "Amenhotep", "Cléopâtre", "Djoser", "Horemheb", "Khéops", "Khéphren", "Mykerinos", "Mérenptah", "Mérenrê", "Néfertiti", "Ramsès", "Ramsès II", "Sésostris", "Thoutmosis", "Toutânkhamon"]
+        },
+        {
             title: "Histoire et politique-Pharaons de l'Égypte antique",
             answers: ["Akhenaton", "Aménophis", "Chéops", "Cléopâtre", "Hatshepsout", "Khéphren", "Mykérinos", "Néfertiti", "Ramsès II", "Thoutmosis", "Toutânkhamon", "Xerxès"]
         },
@@ -7105,7 +7643,7 @@
         },
         {
             title: "Histoire et politique-Sigles d'organisations internationales",
-            answers: ["ACEUM", "AIEA", "ALENA", "ASEAN", "CPI", "FMI", "OACI", "OCDE", "OIT", "OMC", "OMPI", "OMS", "ONU", "OPEP", "OSCE", "OTAN", "TPI", "UA", "UE", "UNESCO", "UNICEF", "ZLEA"]
+            answers: ["ACEUM", "AIEA", "ALENA", "ASEAN", "CIO", "CPI", "FIFA", "FMI", "OACI", "OCDE", "OIT", "OMC", "OMPI", "OMS", "ONU", "OPEP", "OSCE", "OTAN", "TPI", "UA", "UE", "UNESCO", "UNICEF", "ZLEA"]
         },
         {
             title: "Histoire et politique-Signataires de la Déclaration d'Indépendance US",
@@ -7130,6 +7668,10 @@
         {
             title: "Histoire et politique-Traités de paix célèbres",
             answers: ["Amiens", "Brest-Litovsk", "Cambrai", "Francfort", "Gand", "Hubertisbourg", "Lodi", "Nimègue", "Paris", "Pyrénées", "Ryswick", "Tilsit", "Utrecht", "Versailles", "Vienne", "Westphalie"]
+        },
+        {
+            title: "Histoire et politique-Traités de paix célèbres",
+            answers: ["Amiens", "Augsbourg", "Brétigny", "Cateau-Cambrésis", "Nimègue", "Osnabrück", "Paris", "Pyrenees", "Rastadt", "Ryswick", "Tilsit", "Tordesillas", "Utrecht", "Verdun", "Versailles", "Vienne", "Westphalie"]
         },
         {
             title: "Histoire et politique-Traités européens célèbres",
@@ -7221,7 +7763,7 @@
         },
         {
             title: "Nature-Animaux commençant par E",
-            answers: ["Eider", "Eschrichtius", "Esturgeon", "Eumops", "Eurasier", "Exocet", "Écrevisse", "Églefin", "Élanion", "Élephant", "Élephant de mer", "Épagneul", "Épervier", "Éphémère", "Éponge", "Étoile de mer"]
+            answers: ["Eider", "Eschrichtius", "Espadon", "Esturgeon", "Eumops", "Eurasier", "Exocet", "Échidné", "Écrevisse", "Écureuil", "Églefin", "Élan", "Élanion", "Éléphant", "Éléphant de mer", "Émeu", "Émyde", "Épagneul", "Épervier", "Éphémère", "Éponge", "Étoile de mer", "Étourneau"]
         },
         {
             title: "Nature-Animaux commençant par F",
@@ -7452,10 +7994,6 @@
             answers: ["Cassenoix", "Choucas", "Corbeau", "Corneille", "Geai", "Merle", "Pie bavarde", "Rat", "Écureuil", "Étourneau"]
         },
         {
-            title: "Nature-Animaux qui construisent avec de la boue",
-            answers: ["Abeille maçonne", "Flamant rose", "Fourmi pot-de-miel", "Guêpe potière", "Guêpier d'Europe", "Hirondelle de fenêtre", "Hirondelle rustique", "Héron garde-boeufs", "Martin-pêcheur", "Termite"]
-        },
-        {
             title: "Nature-Animaux qui construisent des barrages",
             answers: ["Campagnol aquatique", "Castor", "Castor canadensis", "Castor du Canada", "Castor européen", "Castor fiber", "Fouine", "Genette", "Loutre", "Martre des pins", "Myocastor", "Ondatra", "Ragondin", "Rat musqué", "Vison d'Amérique", "Écureuil volant"]
         },
@@ -7674,10 +8212,6 @@
         {
             title: "Nature-Animaux qui vivent dans les arbres creux",
             answers: ["Chauve-souris", "Chouette", "Hibou", "Lérot", "Martre", "Opossum", "Pic-vert", "Raton laveur", "Tamia", "Écureuil"]
-        },
-        {
-            title: "Nature-Animaux qui vivent dans les volcans ou zones géothermiques",
-            answers: ["Bactérie extrêmophile", "Crabe yéti", "Crevette des abysses", "Grillon des laves", "Limace des sources chaudes", "Nématode", "Pectinereis glandulosa", "Poisson des glaces", "Polychète tubicole", "Raie des profondeurs", "Requin dormeur", "Scolopendre de mer", "Ver de Pompéi"]
         },
         {
             title: "Nature-Animaux qui vivent en colonies",
@@ -8012,6 +8546,10 @@
             answers: ["Abricotier", "Amandier", "Cerisier", "Châtaignier", "Citronnier", "Cognassier", "Figuier", "Grenadier", "Kaki", "Mandarinier", "Manguier", "Noisetier", "Noyer", "Néflier", "Olivier", "Oranger", "Poirier", "Pommier", "Prunier", "Pêcher", "Vigne"]
         },
         {
+            title: "Nature-Arbres fruitiers méditerranéens",
+            answers: ["Abricotier", "Amandier", "Caroubier", "Cerisier", "Cognassier", "Figuier", "Grenadier", "Jujubier", "Kaki", "Néflier", "Olivier", "Oranger", "Pistachier", "Poirier", "Pommier", "Prunier", "Pêcher", "Vigne"]
+        },
+        {
             title: "Nature-Arbres fruitiers tropicaux",
             answers: ["Avocatier", "Cacaoyer", "Carambolier", "Corossolier", "Durian", "Goyavier", "Jacquier", "Jaquier", "Litchi", "Longane", "Mangoustanier", "Manguier", "Papayer", "Ramboutan", "Sapotillier"]
         },
@@ -8045,7 +8583,7 @@
         },
         {
             title: "Nature-Arbres toujours verts",
-            answers: ["Cyprès", "Cèdre", "Genévrier", "If", "Laurier", "Olivier", "Pin", "Sapin", "Thuya", "Épicéa"]
+            answers: ["Araucaria", "Buis", "Chêne vert", "Cyprès", "Cèdre", "Eucalyptus", "Genévrier", "If", "Laurier", "Laurier-tin", "Magnolia", "Mélèze", "Olivier", "Pin", "Rhododendron", "Sapin", "Séquoia", "Thuya", "Épicéa"]
         },
         {
             title: "Nature-Arbres tropicaux",
@@ -8340,10 +8878,6 @@
             answers: ["Chrysanthème", "Freesia", "Gerbera", "Iris", "Lys", "Muguet", "Pivoine", "Rose", "Tulipe", "Œillet"]
         },
         {
-            title: "Nature-Fleurs qui changent de couleur selon le pH du sol",
-            answers: ["Hortensia", "Hydrangea macrophylla", "Lilium", "Lobelia", "Pulmonaire officinale", "Pétunia", "Rose de Noël", "Trillium"]
-        },
-        {
             title: "Nature-Fleurs qui poussent au printemps",
             answers: ["Crocus", "Forsythia", "Jacinthe", "Jonquille", "Magnolia", "Perce-neige", "Primevère", "Pâquerette", "Tulipe", "Violette"]
         },
@@ -8396,6 +8930,10 @@
             answers: ["Abricot", "Ananas", "Banane", "Citron", "Coing", "Kumquat", "Melon", "Pamplemousse", "Poire", "Pomme", "Prune", "Pêche"]
         },
         {
+            title: "Nature-Fruits jaunes",
+            answers: ["Ananas", "Banane", "Citron", "Coing", "Kaki", "Mangue", "Melon", "Mirabelle", "Nèfle", "Pamplemousse", "Poire jaune", "Prune jaune", "Yuzu"]
+        },
+        {
             title: "Nature-Fruits qu'on conserve",
             answers: ["Abricot sec", "Ananas séché", "Banane séchée", "Datte", "Figue sèche", "Mangue séchée", "Poire", "Pomme", "Pruneau", "Raisin sec"]
         },
@@ -8434,6 +8972,10 @@
         {
             title: "Nature-Fruits tropicaux",
             answers: ["Ananas", "Avocat", "Banane", "Carambole", "Corossol", "Fruit de la passion", "Goyave", "Grenade", "Kiwi", "Litchi", "Mangue", "Maracuja", "Noix de coco", "Papaye", "Pitaya", "Ramboutan", "Sapotille", "Tamarin"]
+        },
+        {
+            title: "Nature-Fruits verts (chair ou peau)",
+            answers: ["Avocat", "Carambole", "Chayotte", "Citron vert", "Corossol", "Edamame", "Feijoa", "Fruit à pain", "Goyave", "Groseille", "Kiwano", "Kiwi", "Lime", "Melon", "Nashi", "Poire", "Pomme", "Raisin", "Ugli"]
         },
         {
             title: "Nature-Fruits à chair blanche",
@@ -8504,6 +9046,10 @@
             answers: ["Bousier", "Carabe", "Coccinelle", "Crache-sang", "Cétoine", "Dytique", "Hanneton", "Lampyre", "Lepture", "Lucane", "Melonthon", "Nécrophore", "Saperde", "Scarabée", "Staphylin", "Taupin"]
         },
         {
+            title: "Nature-Insectes des zones humides",
+            answers: ["Agrion", "Aselle", "Chironome", "Dytique", "Gerris", "Libellule", "Moustique", "Notonecte", "Phrygane", "Sangsue", "Tipule", "Trichoptère", "Éphémère"]
+        },
+        {
             title: "Nature-Insectes parasites",
             answers: ["Acarien", "Aleurode", "Charançon", "Cicadelle", "Cochenille", "Doryphore", "Mite", "Noctuelle", "Pou", "Psylle", "Puce", "Puceron", "Punaise de lit", "Teigne", "Thrips", "Tique"]
         },
@@ -8514,6 +9060,10 @@
         {
             title: "Nature-Insectes pollinisateurs",
             answers: ["Abeille", "Bourdon", "Chrysopes", "Colibri", "Cétoine", "Guêpe", "Mante", "Mouche", "Papillon", "Syrphe", "Taon", "Xylocope"]
+        },
+        {
+            title: "Nature-Insectes pollinisateurs",
+            answers: ["Abeille", "Andrène", "Bourdier", "Bourdon", "Chrysope", "Collète", "Cératine", "Halicte", "Lucilie", "Mégachile", "Mélitée", "Nomade", "Osmie", "Papillon", "Xylocope"]
         },
         {
             title: "Nature-Insectes qui imitent des feuilles ou des branches",
@@ -8620,6 +9170,10 @@
             answers: ["Betterave", "Carotte", "Crosne", "Céleri-rave", "Daikon", "Igname", "Manioc", "Navet", "Panais", "Patate douce", "Pomme de terre", "Radis", "Radis noir", "Rutabaga", "Salsifis", "Scorsonère", "Taro", "Topinambour"]
         },
         {
+            title: "Nature-Légumes racines et tubercules",
+            answers: ["Betterave", "Carotte", "Cerfeuil", "Céleri-rave", "Fenouil", "Gingembre", "Manioc", "Navet", "Panais", "Patate douce", "Radis", "Raiffort", "Rutabaga", "Salsifis", "Topinambour", "Wasabi"]
+        },
+        {
             title: "Nature-Légumes ronds",
             answers: ["Artichaut", "Betterave", "Chou", "Chou-fleur", "Navet", "Oignon", "Petit pois", "Pomme de terre", "Radis", "Tomate"]
         },
@@ -8650,6 +9204,10 @@
         {
             title: "Nature-Mammifères marins",
             answers: ["Baleine", "Baleine bleue", "Béluga", "Cachalot", "Dauphin", "Dugong", "Globicéphale", "Lamantin", "Marsouin", "Morse", "Narval", "Orque", "Otarie", "Phoque", "Rorqual"]
+        },
+        {
+            title: "Nature-Mammifères marins",
+            answers: ["Baleine", "Béluga", "Cachalot", "Dauphin", "Dugong", "Lamantin", "Loutre marine", "Morse", "Narval", "Orque", "Otarie", "Phoque", "Rorqual", "Veau marin"]
         },
         {
             title: "Nature-Mammifères nocturnes",
@@ -8714,10 +9272,6 @@
         {
             title: "Nature-Oiseaux aquatiques non marins (eau douce et marais)",
             answers: ["Aigrette", "Butor", "Canard", "Cygne", "Foulque macroule", "Grue", "Grèbe", "Héron", "Martin-pêcheur", "Poule d'eau", "Sarcelle"]
-        },
-        {
-            title: "Nature-Oiseaux aux parades nuptiales spectaculaires",
-            answers: ["Argus géant", "Bowerbird", "Combattant varié", "Faisan doré", "Fou à pieds bleus", "Grue du Japon", "Grèbe huppé", "Lyrure", "Manakin à cuisses jaunes", "Oiseau de paradis", "Outarde canepetière", "Paon bleu", "Parrotie de Sclater", "Satyre de Temminck", "Tétras lyre"]
         },
         {
             title: "Nature-Oiseaux chanteurs",
@@ -8892,6 +9446,10 @@
             answers: ["Aigue-marine", "Alexandrite", "Améthyste", "Béryl", "Citrine", "Corail", "Cornaline", "Diamant", "Emeraude", "Grenat", "Jade", "Lapis-lazuli", "Malachite", "Opale", "Péridot", "Rubis", "Saphir", "Topaze", "Tourmaline", "Turquoise"]
         },
         {
+            title: "Nature-Pierres précieuses et semi-précieuses",
+            answers: ["Aigue-marine", "Alexandrite", "Améthyste", "Citrine", "Corail", "Cornaline", "Diamant", "Grenat", "Jade", "Lapis-lazuli", "Onyx", "Opale", "Péridot", "Rubis", "Saphir", "Tanzanite", "Topaze", "Tourmaline", "Émeraude"]
+        },
+        {
             title: "Nature-Plantes aquatiques",
             answers: ["Algue", "Cresson", "Jacinthe d’eau", "Joncs", "Lentille d’eau", "Lotus", "Nénuphar", "Papyrus", "Salvinie", "Typha", "Utricule", "Élodée"]
         },
@@ -8938,6 +9496,14 @@
         {
             title: "Nature-Plantes des falaises",
             answers: ["Armeria", "Asphodèle", "Aubépine", "Ciste", "Crithme", "Euphorbe", "Genêt", "Hélianthème", "Linaire", "Orpin", "Pavot cornu", "Saxifrage", "Silène", "Statice", "Viorne"]
+        },
+        {
+            title: "Nature-Plantes des falaises maritimes",
+            answers: ["Armeria", "Aster marin", "Criste marine", "Euphorbe", "Fétuque", "Gazon d'Olympe", "Glycérie", "Linaire", "Obione", "Orpin", "Plantain", "Roquette de mer", "Salicorne", "Soude", "Statice"]
+        },
+        {
+            title: "Nature-Plantes des forêts méditerranéennes",
+            answers: ["Arbousier", "Asphodèle", "Bruyère", "Ciste", "Genêt", "Hélianthème", "Lavande", "Myrte", "Olivier", "Origan", "Pistachier", "Romarin", "Salsepareille", "Thym"]
         },
         {
             title: "Nature-Plantes des sous-bois",
@@ -9008,10 +9574,6 @@
             answers: ["Cresson", "Iris d'eau", "Jacinthe d'eau", "Jonc", "Lentille d'eau", "Lotus", "Massette", "Menthe aquatique", "Nénuphar", "Roseau"]
         },
         {
-            title: "Nature-Plantes qui se referment au toucher",
-            answers: ["Biophytum sensitivum", "Codariocalyx motorius", "Dionée attrape-mouche", "Drosera", "Mimosa pudica", "Mimosa sensitiva", "Neptunia oleracea", "Oxalis regnellii", "Schrankia uncinata"]
-        },
-        {
             title: "Nature-Plantes qui sentent bon",
             answers: ["Basilic", "Chèvrefeuille", "Gardénia", "Jasmin", "Lavande", "Lilas", "Menthe", "Romarin", "Rose", "Thym"]
         },
@@ -9048,10 +9610,6 @@
             answers: ["Ajonc", "Aubépine", "Berberis", "Genêt épineux", "Houx", "Mahonia", "Prunellier", "Pyracantha", "Ronce", "Rosier"]
         },
         {
-            title: "Nature-Poissons bioluminescents",
-            answers: ["Baudroie abyssale", "Chimère", "Hache d'argent", "Lanterne à nez clair", "Lentille d'eau de mer", "Malacosteus", "Poisson-dragon", "Poisson-lanterne", "Poisson-phare", "Poisson-vipère", "Squalelet féroce", "Sébaste"]
-        },
-        {
             title: "Nature-Poissons carnivores",
             answers: ["Barracuda", "Brochet", "Carangue", "Carpeau", "Dorade", "Espadon", "Loup de mer", "Marlin", "Merlu", "Piranha", "Saumon", "Silure", "Thon", "Truite de mer", "Truite tigre"]
         },
@@ -9070,6 +9628,10 @@
         {
             title: "Nature-Poissons de Méditerranée",
             answers: ["Anchois", "Bar", "Daurade", "Loup", "Merlan", "Mérou", "Pageot", "Rascasse", "Rouget", "Sar", "Sole", "Thon"]
+        },
+        {
+            title: "Nature-Poissons des grands fonds",
+            answers: ["Baudroie", "Calmar géant", "Chimère", "Coelacanthe", "Dragon noir", "Flétan", "Grenadier", "Haplognathe", "Lanternfish", "Lingue", "Lépidope", "Macrure", "Myctophidé", "Opisthoproctus", "Squalidus", "Vipère de mer"]
         },
         {
             title: "Nature-Poissons des récifs coralliens",
@@ -9136,6 +9698,10 @@
             answers: ["Anaconda", "Boa", "Caméléon", "Cobra", "Couleuvre", "Crocodile", "Gecko", "Iguane", "Lézard", "Python", "Salamandre", "Serpent", "Tortue", "Varan", "Vipère"]
         },
         {
+            title: "Nature-Reptiles d'Afrique",
+            answers: ["Agame", "Bitis", "Boomslangs", "Caméléon", "Cobra", "Crocodile", "Gecko", "Lézard fouette-queue", "Mamba", "Monitor", "Naja", "Nile monitor", "Python", "Tortue léopard", "Téju", "Varan"]
+        },
+        {
             title: "Nature-Reptiles des déserts",
             answers: ["Addax", "Agame", "Caméléon", "Cobra", "Dipsas", "Dragon", "Fouette-queue", "Gecko", "Heloderme", "Lézard", "Moloch", "Naja", "Phrynosome", "Serpent des sables", "Skink", "Uroplatus", "Varan"]
         },
@@ -9198,6 +9764,10 @@
         {
             title: "Nature-Vents",
             answers: ["Alizé", "Autan", "Bise", "Blizzard", "Bora", "Chinook", "Foehn", "Harmattan", "Mistral", "Mousson", "Nordet", "Simoun", "Sirocco", "Suroît", "Tornade", "Tramontane", "Typhon", "Zéphyr"]
+        },
+        {
+            title: "Nature-Végétaux du désert",
+            answers: ["Acacia", "Aloès", "Baobab", "Cactus", "Cardon", "Dattier", "Euphorbe", "Figuier de Barbarie", "Genêt", "Jujubier", "Laurier-rose", "Mimosa", "Neem", "Opuntia", "Palmier", "Saguaro", "Tamaris", "Welwitschia"]
         },
         {
             title: "Nature-Étoiles et objets célestes visibles à l'oeil nu",
@@ -10368,6 +10938,10 @@
             answers: ["Boris", "Colin", "David", "Denis", "Dylan", "Félix", "Gabin", "Jules", "Louis", "Lucas", "Oscar", "Robin", "Simon"]
         },
         {
+            title: "Noms et prénoms-Prénoms masculins en 4 lettres",
+            answers: ["Abel", "Adam", "Alex", "Axel", "Eden", "Hugo", "Liam", "Loïc", "Léon", "Marc", "Maël", "Nils", "Noah", "Paul", "Rémi", "Théo", "Yann", "Élie", "Éric"]
+        },
+        {
             title: "Noms et prénoms-Prénoms masculins en 8 lettres ou plus (non composes)",
             answers: ["Alexandre", "Balthazar", "Constantin", "Dominique", "Emmanuel", "Ferdinand", "Guillaume", "Hippolyte", "Isidore", "Léonidas", "Maximilien", "Napoléon", "Philippe", "Sébastien", "Théophile", "Timothée", "Valentin"]
         },
@@ -10385,7 +10959,7 @@
         },
         {
             title: "Noms et prénoms-Prénoms masculins français comprenant deux A",
-            answers: ["Abraham", "Anastase", "Anatole", "Barnabé", "Damascène", "Gaspard", "Isaac", "Lazare", "Pascal", "Raphaël"]
+            answers: ["Abraham", "Alain", "Anastase", "Anatole", "Armand", "Baldassare", "Balthazar", "Barnabé", "Damascène", "Gaspard", "Isaac", "Lazare", "Nathanaël", "Pascal", "Raphaël"]
         },
         {
             title: "Noms et prénoms-Prénoms masculins les plus courants de la génération 1920",
@@ -10532,6 +11106,10 @@
             answers: ["Baleine", "Crabe", "Crevette", "Dauphin", "Hippocampe", "Homard", "Huître", "Morse", "Moule", "Méduse", "Orque", "Phoque", "Pieuvre", "Raie", "Requin", "Sardine", "Sole", "Thon", "Étoile de mer"]
         },
         {
+            title: "Science-Animaux marins courants",
+            answers: ["Calmar", "Crabe", "Dauphin", "Homard", "Moule", "Méduse", "Orque", "Phoque", "Raie", "Requin", "Sardine", "Thon"]
+        },
+        {
             title: "Science-Antibiotiques et classes d'antibiotiques",
             answers: ["Aminoglycoside", "Amoxicilline", "Ampicilline", "Carbapénème", "Chloramphénicol", "Céphalosporine", "Erythromycine", "Fluoroquinolone", "Gentamicine", "Macrolide", "Métronidazole", "Oxacilline", "Pénicilline", "Rifampicine", "Streptomycine", "Sulfamide", "Tétracycline", "Vancomycine"]
         },
@@ -10612,10 +11190,6 @@
             answers: ["Canaux", "Cochlée", "Endolymphe", "Fenêtre ronde", "Limbe", "Macule", "Organe de Corti", "Périlymphe", "Rampe", "Saccules", "Strie vasculaire", "Utricule", "Vestibule"]
         },
         {
-            title: "Science-Composants de la cellule nerveuse",
-            answers: ["Axone", "Cellule de Schwann", "Corps cellulaire", "Cône d'implantation", "Dendrite", "Fente synaptique", "Gaine de myéline", "Microglie", "Neurofilament", "Nodule de Ranvier", "Noyau", "Post-synapse", "Pré-synapse", "Terminaison", "Vésicule"]
-        },
-        {
             title: "Science-Composants du sang",
             answers: ["Albumine", "Anticorps", "Fibrinogène", "Globule blanc", "Globule rouge", "Hématie", "Hémoglobine", "Leucocyte", "Lymphocyte", "Monocyte", "Neutrophile", "Phagocyte", "Plaquette", "Plasma", "Sérum", "Érythrocyte"]
         },
@@ -10650,6 +11224,10 @@
         {
             title: "Science-Constellations visibles en Europe",
             answers: ["Andromède", "Bouvier", "Cassiopée", "Centaure", "Cygne", "Dragon", "Grande Ourse", "Gémeaux", "Hercule", "Lynx", "Orion", "Persée", "Petite Ourse", "Poissons", "Pégase", "Sagittaire", "Scorpion", "Taureau", "Verseau", "Vierge"]
+        },
+        {
+            title: "Science-Corps du système solaire",
+            answers: ["Astéroïde", "Callisto", "Ceinture", "Comète", "Déimos", "Europe", "Ganymède", "Io", "Jupiter", "Lune", "Mars", "Mercure", "Météorite", "Neptune", "Phobos", "Pluton", "Saturne", "Titan", "Uranus"]
         },
         {
             title: "Science-Couches de l'atmosphère",
@@ -10720,10 +11298,6 @@
             answers: ["Argon", "Hélium", "Krypton", "Néon", "Radon", "Xénon"]
         },
         {
-            title: "Science-Glandes du corps humain",
-            answers: ["Hypophyse", "Pancréas", "Parathyroïdes", "Pinéale", "Prostate", "Salivaires", "Surrénales", "Thalamus", "Thymus", "Thyroïde"]
-        },
-        {
             title: "Science-Grandes constantes physiques",
             answers: ["Avogadro", "Boltzmann", "Coulomb", "Faraday", "Hubble", "Newton", "Planck", "Rydberg", "Stefan"]
         },
@@ -10774,6 +11348,10 @@
         {
             title: "Science-Instruments de mesure en physique",
             answers: ["Altimètre", "Ampèremètre", "Baromètre", "Calorimètre", "Chronomètre", "Densimètre", "Décibelmètre", "Fluxmètre", "Galvanomètre", "Gyroscope", "Géodimètre", "Hygromètre", "Manomètre", "Oscilloscope", "Piézomètre", "Spectromètre", "Thermocouple", "Voltmètre"]
+        },
+        {
+            title: "Science-Instruments de mesure scientifiques",
+            answers: ["Baromètre", "Calorimètre", "Chronomètre", "Colorimètre", "Densimètre", "Dynamo", "Galvanomètre", "Gyroscope", "Hygromètre", "Manomètre", "Oscilloscope", "Ph-mètre", "Pyromètre", "Réfractomètre", "Sismographe", "Spectromètre", "Thermomètre"]
         },
         {
             title: "Science-Instruments de météorologie",
@@ -10856,6 +11434,10 @@
             answers: ["Arc", "Centre", "Circonférence", "Circonscrit", "Compas", "Concentrique", "Corde", "Diamètre", "Pi", "Périmètre", "Rayon", "Rosace", "Secteur", "Tangente"]
         },
         {
+            title: "Science-Le corps humain",
+            answers: ["Artère", "Cerveau", "Colonne", "Côte", "Estomac", "Foie", "Genou", "Intestin", "Nerf", "Omoplate", "Pancréas", "Poumon", "Rate", "Rein", "Sternum", "Tendon", "Tibia", "Veine"]
+        },
+        {
             title: "Science-Le système solaire",
             answers: ["Astéroïdes", "Ceinture de Kuiper", "Comètes", "Europe", "Ganymède", "Io", "Jupiter", "Lune", "Mars", "Mercure", "Météorites", "Neptune", "Nuage d'Oort", "Phobos", "Pluton", "Saturne", "Soleil", "Terre", "Titan", "Uranus", "Vénus"]
         },
@@ -10870,6 +11452,10 @@
         {
             title: "Science-Lois de la physique",
             answers: ["Ampère", "Archimède", "Avogadro", "Bernoulli", "Coulomb", "Dalton", "Faraday", "Gauss", "Hooke", "Joule", "Kepler", "Lenz", "Maxwell", "Newton", "Ohm", "Pascal", "Planck", "Snell"]
+        },
+        {
+            title: "Science-Lois fondamentales de la physique",
+            answers: ["Archimède", "Bernoulli", "Boyle-Mariotte", "Coulomb", "Faraday", "Fick", "Fourier", "Gay-Lussac", "Hooke", "Hubble", "Joule", "Kepler", "Newton", "Ohm", "Pascal", "Snell-Descartes", "Stefan-Boltzmann"]
         },
         {
             title: "Science-Lois physiques portant un nom de personne",
@@ -10952,6 +11538,10 @@
             answers: ["Acétone", "Aldéhyde C10", "Benzène", "Butanone", "Citral", "Eugénol", "Farnésol", "Geraniol", "Hexanal", "Ionone", "Limonène", "Menthol", "Myrcène", "Nérol", "Octanal", "Pinène", "Vanilline"]
         },
         {
+            title: "Science-Molécules odorantes courantes",
+            answers: ["Acétone", "Aldéhyde C10", "Benzène", "Butanone", "Citral", "Eugénol", "Farnésol", "Geraniol", "Hexanal", "Ionone", "Limonène", "Menthol", "Myrcène", "Nérol", "Octanal", "Pinène", "Vanilline"]
+        },
+        {
             title: "Science-Multiples de 17 entre 50 et 200",
             answers: ["102", "119", "136", "153", "170", "187", "51", "68", "85"]
         },
@@ -10974,10 +11564,6 @@
         {
             title: "Science-Métaux",
             answers: ["Acier", "Aluminium", "Argent", "Chrome", "Cuivre", "Fer", "Laiton", "Magnésium", "Mercure", "Nickel", "Or", "Platine", "Plomb", "Titane", "Zinc", "Étain"]
-        },
-        {
-            title: "Science-Métaux de transition",
-            answers: ["Cadmium", "Chrome", "Cobalt", "Cuivre", "Fer", "Irridium", "Manganèse", "Mercure", "Nickel", "Or", "Osmium", "Platine", "Rhodium", "Titane", "Tungstène", "Zinc"]
         },
         {
             title: "Science-Métaux précieux",
@@ -11008,8 +11594,24 @@
             answers: ["Béchers", "Centrifuge", "Erlenmeyer", "Filtre", "Flacon", "Micropipette", "Mortier", "Pipette", "Pissette", "Portoir", "Spatule", "Tube", "Verrerie"]
         },
         {
+            title: "Science-Objets du ciel nocturne",
+            answers: ["Andromède", "Cassiopeia", "Jupiter", "Lune", "Mars", "Mercure", "Orion", "Pléiades", "Saturne", "Sirius", "Voie lactée", "Vénus", "Étoile"]
+        },
+        {
+            title: "Science-Objets du quotidien en métal",
+            answers: ["Cadenas", "Clé", "Couteau", "Cuillère", "Fourchette", "Marteau", "Monnaie", "Ouvre-boîte", "Pince", "Scie", "Tournevis", "Vis"]
+        },
+        {
             title: "Science-Objets d’optique",
             answers: ["Binocle", "Loupe", "Lunette", "Microscope", "Monocle", "Objectif", "Oculaire", "Prisme", "Réticule", "Télescope", "Verre"]
+        },
+        {
+            title: "Science-Objets en plastique du quotidien",
+            answers: ["Bouteille", "Boîte", "Carte", "Casque", "Clé USB", "Gobelet", "Lunettes", "Peigne", "Règle", "Sac", "Stylo", "Tube"]
+        },
+        {
+            title: "Science-Objets géologiques remarquables",
+            answers: ["Basalte", "Cheminée", "Dyke", "Faille", "Geyser", "Karst", "Lac salé", "Maar", "Mesa", "Oasis", "Polder", "Roche mère", "Sill", "Tuf"]
         },
         {
             title: "Science-Océanographes",
@@ -11212,6 +11814,10 @@
             answers: ["Conduction", "Convection", "Cryogénie", "Dilatation", "Fusion", "Givrage", "Incandescence", "Inertie", "Isothermie", "Pyrolyse", "Rayonnement", "Refroidir", "Sublimation", "Vaporisation", "Ébullition"]
         },
         {
+            title: "Science-Phénomènes thermiques naturels",
+            answers: ["Conduction", "Convection", "Dégel", "Fusion", "Geyser", "Glaciation", "Inversion", "Rayonnement", "Refroidissement", "Sublimation", "Vapeur", "Évaporation"]
+        },
+        {
             title: "Science-Phénomènes volcaniques",
             answers: ["Bombes volcaniques", "Caldeira", "Cendre volcanique", "Coulée de lave", "Fumerolles", "Gaz volcanique", "Geyser", "Lahar", "Lapilli", "Mofettes", "Nuée ardente", "Pyroclastes", "Scories", "Solfatares", "Source chaude", "Éruption"]
         },
@@ -11222,6 +11828,10 @@
         {
             title: "Science-Phénomènes électriques",
             answers: ["Arc", "Champ", "Charge", "Circuit", "Conductivité", "Courant", "Décharge", "Induction", "Isolant", "Potentiel", "Résistance", "Tension"]
+        },
+        {
+            title: "Science-Phénomènes électriques naturels",
+            answers: ["Aurora", "Boule de feu", "Foudre", "Fulmination", "Lueur bleue", "Orage", "Paratonnerre", "Plasma", "Tonnerre", "Éclair"]
         },
         {
             title: "Science-Planètes du système solaire",
@@ -11294,6 +11904,10 @@
         {
             title: "Science-Produits dopants",
             answers: ["Amphétamines", "Anabolisants", "Bêta-bloquants", "Bêtabloquant", "Caféine", "Cannabinoïdes", "Cannabis", "Cocaïne", "Corticoïdes", "Cortisone", "Créatine", "Diurétiques", "EPO", "Erythropoïétine", "Glucocorticoïdes", "Hormone de croissance", "Insuline", "Modafinil", "Mélanotan", "Narcotiques", "Peptides", "Stéroïdes", "Testostérone"]
+        },
+        {
+            title: "Science-Satellites artificiels célèbres",
+            answers: ["Cassini", "Chandra", "Envisat", "GPS", "Galileo", "Hubble", "IRAS", "ISS", "James Webb", "Landsat", "Meteosat", "Mir", "SOHO", "Sentinel", "Spitzer", "Sputnik", "Terra"]
         },
         {
             title: "Science-Satellites naturels du système solaire",
@@ -11508,6 +12122,10 @@
             answers: ["Ammoniac", "Argon", "Azote", "Brome", "Butane", "Chlore", "Fluor", "Hydrogène", "Hélium", "Iode", "Krypton", "Méthane", "Néon", "Oxygène", "Ozone", "Propane", "Radon", "Xénon"]
         },
         {
+            title: "Science-Éléments du tableau périodique",
+            answers: ["Argent", "Argon", "Azote", "Baryum", "Bore", "Calcium", "Carbone", "Chrome", "Cobalt", "Cuivre", "Fer", "Fluor", "Hydrogène", "Hélium", "Lithium", "Nickel", "Néon", "Oxygène", "Plomb"]
+        },
+        {
             title: "Science-Éléments radioactifs",
             answers: ["Cobalt", "Césium", "Iode", "Plutonium", "Radium", "Radon", "Strontium", "Thorium", "Tritium", "Uranium"]
         },
@@ -11684,6 +12302,10 @@
             answers: ["Allemagne", "Danemark", "Espagne", "France", "Grèce", "Italie", "Pays-Bas", "Portugal", "Tchécoslovaquie"]
         },
         {
+            title: "Sports et jeux-Escrimeurs et escrimeuses célèbres",
+            answers: ["Borella", "Canova", "D'Oriola", "Fencing", "Flessel", "Homonnay", "Krause", "Laura Flessel", "Mangiarotti", "Milanello", "Oteiza", "Pillet", "Rombauer", "Sabers", "Szilagyi", "Thevenet", "Wosk"]
+        },
+        {
             title: "Sports et jeux-Figures de gymnastique au sol",
             answers: ["ATR", "Arabesque", "Chandelle", "Flic-flac", "Flip", "Grand écart", "Lune", "Poirier", "Pont", "Rondade", "Roue", "Roulade", "Salto", "Souplesse", "Spagat", "Tsukahara", "Vrille", "Équerre"]
         },
@@ -11772,6 +12394,10 @@
             answers: ["Amstel", "Criterium", "Flèche Wallonne", "Giro", "Kuurne", "Liège-Bastogne", "Milan-Sanremo", "Paris-Nice", "Paris-Roubaix", "Ronde van Vlaanderen", "Strade Bianche", "Tirreno", "Tour d'Espagne", "Tour de France", "Tour de Suisse", "Tour de Wallonie", "Vuelta"]
         },
         {
+            title: "Sports et jeux-Grands Tours cyclistes (pays)",
+            answers: ["Andalousie", "Burgos", "Catalogne", "Colombie", "Dubaï", "Espagne", "France", "Grande-Bretagne", "Italie", "Norvège", "Pologne", "Romandie", "Slovénie", "Suisse", "Wallonie"]
+        },
+        {
             title: "Sports et jeux-Grands clubs européens de football",
             answers: ["AC Milan", "Ajax Amsterdam", "Arsenal", "Atletico Madrid", "Barcelona", "Bayern Munich", "Benfica", "Inter Milan", "Juventus", "Liverpool", "Manchester City", "Manchester United", "Paris Saint-Germain", "Real Madrid"]
         },
@@ -11780,7 +12406,7 @@
             answers: ["Bourgain", "Cavendish", "Coquard", "Debusschere", "Dennis", "Ganna", "Jens Keukeleire", "Kenny", "Lavreysen", "Levy", "Pervis", "Rousseau", "Viviani", "Wiggins"]
         },
         {
-            title: "Sports et jeux-Grands sportifs italiens hors football",
+            title: "Sports et jeux-Grands sportifs italiens hors football (hommes et femmes)",
             answers: ["Agostini", "Bartali", "Coppi", "Jacobs", "Menechea", "Pantani", "Pellegrini", "Rossi", "Simeoni", "Sinner", "Tamberi", "Tomba", "Vezzali"]
         },
         {
@@ -11996,6 +12622,10 @@
             answers: ["Adrian", "Bernard", "Biedermann", "Biondi", "Cielo", "Dressel", "Ervin", "Grousset", "Hackett", "Hall", "Jany", "Lochte", "Marchand", "Matthes", "Milák", "Murphy", "Nakache", "Peaty", "Peirsol", "Phelps", "Popov", "Salnikov", "Spitz", "Thorpe", "Van den Hoogenband", "Weissmuller"]
         },
         {
+            title: "Sports et jeux-Nageurs et nageuses olympiques célèbres",
+            answers: ["Biondi", "Caulkins", "Egerszegi", "Ender", "Evans", "Gross", "Ledecky", "Manaudou", "Meagher", "Phelps", "Popov", "Schollander", "Spitz", "Thorpe", "Torres", "Van den Hoogenband"]
+        },
+        {
             title: "Sports et jeux-Nageurs français",
             answers: ["Agnel", "Bernard", "Bousquet", "Caron", "Castello", "Duboscq", "Esposito", "Gilot", "Grousset", "Guerinot", "Jany", "Lacourt", "Lefert", "Leveaux", "Manaudou", "Marchand", "Metella", "Mignon", "Nakache", "Perez", "Rougier", "Savage", "Stravius", "Vallerey"]
         },
@@ -12160,6 +12790,10 @@
             answers: ["Ailier droit", "Ailier gauche", "Centre", "Defenseman offensif", "Défenseur", "Enforcer", "Gardien", "Playmaker", "Sniper", "Two-way forward"]
         },
         {
+            title: "Sports et jeux-Postes au football",
+            answers: ["Ailier", "Arrière", "Avant-centre", "Buteur", "Capitaine", "Défenseur", "Gardien", "Latéral", "Libéro", "Meneur", "Milieu", "Numéro 10", "Pivot", "Stoppeur", "Striker"]
+        },
+        {
             title: "Sports et jeux-Postes au rugby",
             answers: ["Ailier", "Arrière", "Centre", "Demi de mêlée", "Demi d’ouverture", "Deuxième ligne", "Flanker", "Pilier", "Talonneur", "Troisième ligne"]
         },
@@ -12221,7 +12855,15 @@
         },
         {
             title: "Sports et jeux-Sports collectifs",
-            answers: ["Aviron", "Base-ball", "Basket-ball", "Cricket", "Football", "Football américain", "Handball", "Hockey sur gazon", "Hockey sur glace", "Polo", "Rugby", "Ultimate frisbee", "Volleyball", "Water-polo"]
+            answers: ["Aviron", "Base-ball", "Basket-ball", "Bobsleigh", "Cricket", "Curling", "Football", "Football américain", "Handball", "Hockey sur gazon", "Hockey sur glace", "Korfball", "Netball", "Polo", "Rink hockey", "Rugby", "Softball", "Ultimate frisbee", "Volleyball", "Water-polo"]
+        },
+        {
+            title: "Sports et jeux-Sports collectifs (A à F)",
+            answers: ["Aviron", "Base-ball", "Basket-ball", "Bobsleigh", "Cricket", "Curling", "Football", "Football américain"]
+        },
+        {
+            title: "Sports et jeux-Sports collectifs (H à W)",
+            answers: ["Handball", "Hockey sur gazon", "Hockey sur glace", "Korfball", "Netball", "Polo", "Rink hockey", "Rugby", "Softball", "Ultimate frisbee", "Volleyball", "Water-polo"]
         },
         {
             title: "Sports et jeux-Sports commençant par A",
@@ -12282,6 +12924,10 @@
         {
             title: "Sports et jeux-Sports mécaniques",
             answers: ["Aéronautique", "BMX", "Courses de camions", "Dragster", "Drift", "Endurance", "Enduro", "Formule 1", "Hydroplane", "Jet ski", "Karting", "Motocross", "Motonautisme", "NASCAR", "Parapente motorisé", "Quad", "Rallye", "Speedway", "Stock-car", "Supermotard", "Trial", "ULM"]
+        },
+        {
+            title: "Sports et jeux-Sports olympiques d'été",
+            answers: ["Aviron", "Boxe", "Canoë", "Cyclisme", "Escrime", "Gymnastique", "Haltérophilie", "Handball", "Judo", "Lutte", "Natation", "Pentathlon", "Taekwondo", "Tennis", "Tir", "Tir à l'arc", "Voile", "Volleyball", "Équitation"]
         },
         {
             title: "Sports et jeux-Sports olympiques disparus",
@@ -12353,7 +12999,7 @@
         },
         {
             title: "Sports et jeux-Termes du rugby",
-            answers: ["Arbitre", "Ballon ovale", "Banc de touche", "Drop", "En-but", "Essai", "Groupé pénétrant", "Hors-jeu", "In-goal", "Mêlée", "Pilier", "Plaquage", "Pénalité", "Ruck", "Talonneur", "Touche", "Transformation"]
+            answers: ["Arbitre", "Arrière", "Ballon ovale", "Banc de touche", "Botteur", "Bulldog", "Capitaine", "Centre", "Coup de pied", "Demi d'ouverture", "Demi de mêlée", "Drop", "En-avant", "En-but", "Essai", "Groupé pénétrant", "Hors-jeu", "In-goal", "Maul", "Mêlée", "Numéro huit", "Pilier", "Plaquage", "Pénalité", "Ruck", "Talonneur", "Touche", "Transformation", "Troisième ligne", "Up and under"]
         },
         {
             title: "Sports et jeux-Termes du saut d'obstacles (Équitation)",
@@ -12454,6 +13100,10 @@
         {
             title: "Sports et jeux-Villes ayant gagné le championnat de volley-ball au XXe siècle",
             answers: ["Asnières", "Bordeaux", "Cannes", "Fréjus", "Lyon", "Montpellier", "Mulhouse", "Paris", "Sète", "Tourcoing"]
+        },
+        {
+            title: "Sports et jeux-Épreuves d'athlétisme",
+            answers: ["Disque", "Décathlon", "Haies", "Hauteur", "Heptathlon", "Javelot", "Longueur", "Marathon", "Marteau", "Perche", "Poids", "Relais", "Sprint", "Steeple", "Triple saut"]
         },
         {
             title: "Sports et jeux-Épreuves d'athlétisme de lancer",
@@ -13165,7 +13815,7 @@
         },
         {
             title: "Vie quotidienne-Fruits et légumes contenant un P et un S",
-            answers: ["Asperge", "Pamplemousse", "Panais", "Pastèque", "Persil", "Petit pois", "Pissenlit"]
+            answers: ["Asperge", "Pamplemousse", "Panais", "Pastèque", "Persil", "Petit pois", "Pissenlit", "Sapote", "Sapotille"]
         },
         {
             title: "Vie quotidienne-Fruits et légumes contenant un P et un T",
@@ -13274,6 +13924,10 @@
         {
             title: "Vie quotidienne-Gâteaux régionaux français",
             answers: ["Berlingot", "Calisson", "Canelé", "Cannelé", "Financier", "Flan", "Gaufre", "Kouign-amann", "Macaron", "Madeleine", "Nougat", "Paris-Brest", "Tarte tatin"]
+        },
+        {
+            title: "Vie quotidienne-Herbes aromatiques du jardin",
+            answers: ["Aneth", "Basilic", "Bourrache", "Ciboulette", "Coriandre", "Estragon", "Fenouil", "Laurier", "Livèche", "Marjolaine", "Menthe", "Mélisse", "Origan", "Romarin", "Sarriette", "Sauge", "Thym"]
         },
         {
             title: "Vie quotidienne-Herbes de Provence",
@@ -13837,7 +14491,7 @@
         },
         {
             title: "Vie quotidienne-Métiers commençant par L",
-            answers: ["Laborantin", "Laitier", "Libraire", "Livreur", "Logisticien"]
+            answers: ["Laborantin", "Laitier", "Lapidaire", "Laqueur", "Laveur", "Libraire", "Linguiste", "Livreur", "Logisticien", "Luthier"]
         },
         {
             title: "Vie quotidienne-Métiers commençant par M",
@@ -14085,7 +14739,7 @@
         },
         {
             title: "Vie quotidienne-Objets qui se plient",
-            answers: ["Chaise", "Drap", "Feuille", "Journal", "Lettre", "Nappe", "Papier", "Parapluie", "Serviette", "Table", "Tente", "Vêtement", "Éventail"]
+            answers: ["Carte", "Chaise", "Couverture", "Drap", "Feuille", "Journal", "Landau", "Lettre", "Lit de camp", "Mètre", "Nappe", "Origami", "Papier", "Parapluie", "Poussette", "Règle", "Serviette", "Table", "Tente", "Vêtement", "Éventail"]
         },
         {
             title: "Vie quotidienne-Objets qui tournent",
@@ -14149,7 +14803,7 @@
         },
         {
             title: "Vie quotidienne-Outils et instruments pour écrire",
-            answers: ["Calame", "Clavier", "Craie", "Crayon", "Feutre", "Marqueur", "Pinceau", "Plume", "Porte-mines", "Stylo", "Stylo à bille", "Stylo-plume", "Surligneur"]
+            answers: ["Bic", "Calame", "Clavier", "Craie", "Crayon", "Dictaphone", "Encre", "Feutre", "Gomme", "Griffe", "Linéal", "Marqueur", "Pinceau", "Plume", "Plume d'oie", "Porte-mines", "Roseau", "Règle", "Stylet", "Stylo", "Stylo à bille", "Stylo-plume", "Surligneur", "Tablette", "Tampon"]
         },
         {
             title: "Vie quotidienne-Parfums et fragrances",
@@ -14560,6 +15214,10 @@
             answers: ["Balance de cuisine", "Casserole", "Ciseau à volaille", "Cuillère en bois", "Fouet", "Louche", "Mixeur", "Moule à gâteau", "Passoire", "Planche à découper", "Poêle", "Râpe", "Spatule", "Verre mesureur", "Épluche-légumes"]
         },
         {
+            title: "Vie quotidienne-Ustensiles de cuisine",
+            answers: ["Autocuiseur", "Casserole", "Chinois", "Cocotte", "Cuillère", "Ecumoire", "Faitout", "Fouet", "Louche", "Mandoline", "Mortier", "Passoire", "Poêle", "Rouleau", "Spatule", "Tamis"]
+        },
+        {
             title: "Vie quotidienne-Ustensiles de pâtisserie",
             answers: ["Balance", "Batteur", "Corne", "Douille", "Emporte-pièce", "Fouet", "Lèchefrite", "Maryse", "Moule", "Pinceau", "Poche à douille", "Rouleau", "Spatule", "Tamis", "Zesteur"]
         },
@@ -14724,6 +15382,10 @@
             answers: ["Bucolique", "Calfeutrée", "Chaleureuse", "Délétère", "Feutrée", "Frénétique", "Lourde", "Moite", "Oppressante", "Ouateuse", "Pesante", "Sereine", "Sordide", "Sépulcrale", "Vaporeuse", "Électrique"]
         },
         {
+            title: "Vocabulaire-Adjectifs en 4 lettres (hors couleurs)",
+            answers: ["Beau", "Bref", "Cher", "Doux", "Faux", "Fier", "Fort", "Gros", "Haut", "Joli", "Laid", "Lent", "Rude", "Sage", "Seul", "Vain", "Vide", "Vrai", "Âpre"]
+        },
+        {
             title: "Vocabulaire-Adjectifs en AN",
             answers: ["Afghan", "Anglican", "Birman", "Musulman", "Paysan", "Persan", "Rouan", "Valaisan"]
         },
@@ -14836,16 +15498,48 @@
             answers: ["Batique", "Bolique", "Bolisme", "Bolite", "Chrèse", "Clysme", "Clysmique", "Combe", "Dioptre", "Dioptrique", "Drôme", "Falque", "Genèse", "Gène", "Lase", "Lectique", "Lepsie", "Leptique", "Logage", "Logne", "Loguer", "Logueur", "Lopal", "Lyse", "Lyser", "Lytique", "Maran", "Ménial", "Phorèse", "Phote", "Phracte", "Plasme", "Plectique", "Plexie", "Pulte", "Racte", "Rhinien", "Rrhal", "Rrhe", "Rrheuse", "Rrhinien", "S", "Stase", "Stropher", "Strophique", "Strophisme", "Strophiste", "Tonie", "Tonique"]
         },
         {
+            title: "Vocabulaire-Bases lexicales précédées de CATA",
+            answers: ["Batique", "Bolique", "Bolisme", "Bolite", "Chrèse", "Clysmal", "Clysme", "Clysmique", "Combe", "Dioptre", "Drome", "Falque", "Genèse", "Gène", "Lan", "Lase", "Lectique", "Lepsie", "Logage", "Logne", "Logue", "Lyse", "Lyseur", "Maran", "Phorèse", "Phote", "Phracte", "Plasme", "Plectique", "Plexie", "Pulte", "Racte", "Rrhal", "Rrhe", "Rrheux", "Rrhinien", "Stase", "Strophe", "Strophique", "Strophisme", "Strophiste", "Tonique"]
+        },
+        {
             title: "Vocabulaire-Bases lexicales précédées de HOLO",
             answers: ["Causte", "Crine", "Cristallin", "Cène", "Céphale", "Gamie", "Gramme", "Graphe", "Graphie", "Morphe", "Mètre", "Métabolе", "Parasite", "Phrastique", "Protéine", "Rime", "Side", "Steen", "Thurie", "Triche", "Type", "Èdre", "Èdrie"]
+        },
+        {
+            title: "Vocabulaire-Bases lexicales précédées de HYDRO (A à G)",
+            answers: ["Alcoolique", "Base", "Biologie", "Carbonate", "Carbone", "Carbure", "Classeur", "Cortisone", "Cotyle", "Craquage", "Craqueur", "Cute", "Célé", "Céphale", "Céphalie", "Dynamique", "Electrique", "Filicale", "Foil", "Fugation", "Fuge", "Gel", "Glisseur", "Graphe", "Graphie", "Graphique", "Génation", "Géné", "Géologie", "Géologique", "Géologue"]
+        },
+        {
+            title: "Vocabulaire-Bases lexicales précédées de HYDRO (L à P)",
+            answers: ["Lase", "Lat", "Lien", "Lienne", "Lite", "Lithe", "Logie", "Logique", "Logiste", "Logue", "Lysable", "Lysat", "Lyse", "Massage", "Masseur", "Mel", "Minéral", "Minérale", "Mètre", "Mécanique", "Métrie", "Métrique", "Météore", "Nium", "Nyme", "Nymie", "Nymique", "Néphrose", "Peroxyde", "Phile", "Phobe", "Phobie", "Phone", "Phore", "Phyte", "Pique", "Pisie", "Plane", "Ponique", "Port", "Pote", "Ptère", "Pulseur", "Péricarde", "Quinone"]
+        },
+        {
+            title: "Vocabulaire-Bases lexicales précédées de HYDRO (S à Z)",
+            answers: ["Silicate", "Sol", "Soluble", "Speed", "Sphère", "Statique", "Système", "Technique", "Thermal", "Thermale", "Thorax", "Thérapeute", "Thérapie", "Thérapique", "Timètre", "Timétrie", "Timétrique", "Traitement", "Xyde", "Xylamine", "Xylation", "Xyle", "Zoaire"]
         },
         {
             title: "Vocabulaire-Bases lexicales précédées de OLIGO",
             answers: ["Chète", "Clase", "Cène", "Dendrocyte", "Dendroglie", "Holoside", "Mère", "Mérique", "Peptide", "Phrène", "Phrénie", "Pole", "Polistique", "Psone", "Saccharide", "Spermie", "Thérapie", "Trophe", "Élément"]
         },
         {
+            title: "Vocabulaire-Bases lexicales précédées de PHOTO (A à G)",
+            answers: ["Bactérie", "Biologie", "Calque", "Catalyse", "Cathode", "Cellule", "Chimie", "Chimique", "Chrome", "Chromique", "Chromisme", "Composant", "Compose", "Conducteur", "Conduction", "Copie", "Copieur", "Diode", "Elasticité", "Electrique", "Electron", "Emetteur", "Emissif", "Emission", "Emissive", "Finish", "Fission", "Genèse", "Glyptie", "Gramme", "Grammetrie", "Graphe", "Graphie", "Graphique", "Graveur", "Gravure", "Gène", "Génie", "Génique", "Géologie"]
+        },
+        {
+            title: "Vocabulaire-Bases lexicales précédées de PHOTO (L à V)",
+            answers: ["Lecture", "Logie", "Lyse", "Magnétique", "Maton", "Montage", "Mètre", "Mécanique", "Métrie", "Métrique", "Nique", "Phobie", "Phore", "Pile", "Polymère", "Période", "Périodique", "Périodisme", "Reportage", "Reporter", "Reporteur", "Robot", "Roman", "Récepteur", "Résistance", "Résistant", "Sensible", "Sphère", "Stat", "Stoppeur", "Style", "Synthèse", "Système", "Tactisme", "Taxie", "Thèque", "Thérapie", "Transistor", "Trophée", "Tropisme", "Type", "Typie", "Voltaïque"]
+        },
+        {
             title: "Vocabulaire-Bases lexicales précédées de PROTO",
             answers: ["Cellule", "Chorde", "Coccale", "Coccus", "Cola", "Colaire", "Cole", "Corde", "Galaxie", "Gine", "Gyne", "Gynie", "Histoire", "Historien", "Historique", "Lyse", "Mè", "Mère", "Nema", "Nique", "Notaire", "Phyte", "Planète", "Planétaire", "Plasma", "Plasme", "Plasmique", "Plaste", "Ptère", "S", "Stomien", "Thérien", "Typage", "Type", "Typique", "Typiste", "Ure", "Xyde", "Zoaire", "Étoile"]
+        },
+        {
+            title: "Vocabulaire-Bases lexicales précédées de PYRO",
+            answers: ["Clastique", "Corise", "Electricité", "Electrique", "Flam", "Gallique", "Gallol", "Graphe", "Grave", "Graveur", "Gravure", "Gène", "Génation", "Ligneuse", "Ligneux", "Lusite", "Lyse", "Mancie", "Mane", "Manie", "Mètre", "Mécanisme", "Phore", "Phosphate", "Phyte", "Scaphe", "Sis", "Sphère", "Statique", "Sulfurique", "Technicien", "Technie", "Technique", "Xène", "Xénite"]
+        },
+        {
+            title: "Vocabulaire-Bases lexicales précédées de STEREO",
+            answers: ["Bate", "Chimie", "Chimique", "Chromie", "Duc", "Gnosie", "Gramme", "Graphie", "Graphique", "Métrie", "Métrique", "Phonie", "Phonique", "Régulier", "Régulière", "Scope", "Scopie", "Scopique", "Spondyle", "Taxie", "Taxique", "Tomie", "Tomique", "Type", "Typie", "Vision"]
         },
         {
             title: "Vocabulaire-Bases lexicales précédées de TAUTO",
@@ -14874,6 +15568,10 @@
         {
             title: "Vocabulaire-Bases lexicales suivies de CHROME",
             answers: ["A", "Auto", "Cyto", "Ekta", "Electro", "Ferro", "Hyper", "Hypo", "Lipo", "Mercuro", "Mono", "Ni", "Photo", "Phyto", "Poly", "Tri", "Uro"]
+        },
+        {
+            title: "Vocabulaire-Bases lexicales suivies de CULTURE",
+            answers: ["Acéri", "Agri", "Agrumi", "Algo", "Api", "Aqua", "Aqui", "Arbori", "Astaci", "Auto", "Avi", "Bulbi", "Caféi", "Capilli", "Carpi", "Colombi", "Conchyli", "Contre", "Copro", "Cressi", "Crevetti", "Cuni", "Cuniculi", "Cyber", "Cyprini", "Céréali", "De", "Flori", "Hirudini", "Horti", "Hélici", "Hémo", "In", "Inter", "Ligni", "Limni", "Lombri", "Maïsi", "Monaï", "Mono", "Moto", "Myci", "Mytili", "Oléi", "Osieri", "Ostréi", "Pectini", "Perli", "Perma", "Pisci", "Plasti", "Poly", "Pomi", "Pomo", "Populi", "Puéri", "Rizi", "Sali", "Salmoni", "Serri", "Spongi", "Sylvi", "Séri", "Taba", "Truffi", "Truiti", "Trutti", "Vini", "Viti"]
         },
         {
             title: "Vocabulaire-Bases lexicales suivies de DROME",
@@ -15229,7 +15927,7 @@
         },
         {
             title: "Vocabulaire-Mots contenant un î",
-            answers: ["Abîmer", "Aîné", "Boîte", "Boîtier", "Chaîne", "Cloître", "Dîner", "Dînette", "Gaîment", "Gîte", "Huître", "Maître", "Naître", "Paraître", "Traîneau", "Traîner", "Île"]
+            answers: ["Abîmer", "Aîné", "Boîte", "Boîtier", "Chaîne", "Cloître", "Connaître", "Coïncider", "Dîner", "Dînette", "Flûte", "Fraîche", "Fraîcheur", "Gaîment", "Gîte", "Huître", "Maître", "Maîtrise", "Naître", "Paraître", "Raîfort", "Retraîte", "Stoïque", "Traîneau", "Traîner", "Épître", "Île", "Îlot"]
         },
         {
             title: "Vocabulaire-Mots contenant un ï",
@@ -15238,6 +15936,10 @@
         {
             title: "Vocabulaire-Mots courants se terminant par O",
             answers: ["Allo", "Alto", "Apéro", "Auto", "Bigo", "Bingo", "Bobo", "Brio", "Cacao", "Cargo", "Casino", "Clodo", "Dermato", "Domino", "Démo", "Echo", "Embargo", "Fiasco", "Frigo", "Indigo", "Judo", "Kimono", "Lasso", "Mambo", "Métro", "Piano", "Piccolo", "Populo", "Rodéo", "Soprano", "Studio", "Tango", "Trio", "Vélo", "Zéro"]
+        },
+        {
+            title: "Vocabulaire-Mots d'origine arabe",
+            answers: ["Alchimie", "Alcool", "Algorithme", "Algèbre", "Amiral", "Arsenal", "Assassin", "Chiffre", "Coton", "Câble", "Douane", "Hasard", "Magasin", "Momie", "Sirop", "Sorbet", "Sucre", "Zénith"]
         },
         {
             title: "Vocabulaire-Mots d'origine arabe en français",
@@ -15290,6 +15992,10 @@
         {
             title: "Vocabulaire-Mots en OU avec pluriel en OUX",
             answers: ["Bijou", "Caillou", "Chou", "Genou", "Hibou", "Joujou", "Pou"]
+        },
+        {
+            title: "Vocabulaire-Mots en PEAU",
+            answers: ["Appeau", "Carpeau", "Chapeau", "Copeau", "Drapeau", "Oripeau", "Peau", "Pipeau", "Rampeau", "Troupeau"]
         },
         {
             title: "Vocabulaire-Mots en SCOPE",
@@ -16010,6 +16716,10 @@
         {
             title: "Vocabulaire-Mots se terminant par MBO",
             answers: ["Bimbo", "Colombo", "Combo", "Gombo", "Jumbo", "Limbo", "Mambo", "Nelombo", "Nelumbo", "Salambo", "Salammbo", "Sambo", "Umbo"]
+        },
+        {
+            title: "Vocabulaire-Mots se terminant par MEAU",
+            answers: ["Bijumeau", "Chalumeau", "Chameau", "Chrémeau", "Clameau", "Cojumeau", "Enclumeau", "Grumeau", "Gémeau", "Hameau", "Jumeau", "Ormeau", "Plumeau", "Pommeau", "Quadrijumeau", "Rameau", "Trijumeau", "Trumeau"]
         },
         {
             title: "Vocabulaire-Mots se terminant par MEL",
@@ -16748,10 +17458,6 @@
             answers: ["Action", "Banque", "Bourse", "Budget", "Capital", "Chômage", "Consommation", "Croissance", "Crédit", "Dette", "Devise", "Dividende", "Déficit", "Emploi", "Entreprise", "Inflation", "Investissement", "Marché", "Offre", "Salaire"]
         },
         {
-            title: "Voici les listes demandées pour les thèmes de la catégorie **Nature**, en respectant scrupuleusement votre format :",
-            answers: []
-        },
-        {
             title: "s",
             answers: []
         }
@@ -16811,6 +17517,14 @@
     function nextTheme() {
         if(playedThemes.size > 0) validateCurrentTheme();
         if(playedThemes.size >= themes.length) return endGame();
+        
+        // Ajout de la classe de transition
+        const inputsContainer = document.getElementById("inputs");
+        const themeInfo = document.getElementById("theme-container");
+        inputsContainer.classList.remove("fade-in");
+        themeInfo.classList.remove("fade-in");
+        void inputsContainer.offsetWidth; // Force le reflow pour relancer l'animation
+        
         let themeObj;
         do { themeObj = themes[Math.floor(Math.random() * themes.length)]; 
         } while(playedThemes.has(themeObj.title));
@@ -16832,6 +17546,11 @@
         document.getElementById("theme-display").textContent = thm;
         setupInputs();
         updateProgressBar();
+        
+        // Déclenchement de l'animation
+        inputsContainer.classList.add("fade-in");
+        themeInfo.classList.add("fade-in");
+
         const firstInput = document.querySelector("#inputs input");
         if (firstInput) firstInput.focus();
     }
